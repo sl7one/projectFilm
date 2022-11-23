@@ -1,0 +1,57 @@
+.film-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  &__title {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: calc(24 / 20) px;
+    text-transform: uppercase;
+    color: var(--mainBlack);
+  }
+  &__description {
+    display: flex;
+  }
+  &__genre {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: calc(24 / 20) px;
+    color: var(--accent);
+
+    margin-right: 5px;
+  }
+  &__year {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: calc(24 / 20) px;
+    color: var(--accent);
+
+    margin-right: 5px;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: auto;
+
+      margin-right: 5px;
+    }
+  }
+  &__rating {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(14 / 12) px;
+    color: var(--mainWhite);
+
+    width: 40px;
+    height: 20px;
+    border-radius: 5px;
+
+    background-color: var(--accent);
+  }
+}
