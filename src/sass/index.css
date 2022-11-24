@@ -5,12 +5,62 @@
   --mainBlack: #000000;
 }
 
-.film-meta {
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+span {
+  margin: 0px;
+  padding: 0px;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+address {
+  font-style: normal;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  max-width: 1280px;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.film__image {
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+.film__meta {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-.film-meta__title {
+.film__title {
   font-family: "Roboto";
   font-weight: 500;
   font-size: 20px;
@@ -18,10 +68,11 @@
   text-transform: uppercase;
   color: var(--mainBlack);
 }
-.film-meta__description {
+.film__description {
   display: flex;
+  align-items: center;
 }
-.film-meta__genre {
+.film__genre {
   font-family: "Roboto";
   font-weight: 500;
   font-size: 20px;
@@ -29,7 +80,7 @@
   color: var(--accent);
   margin-right: 5px;
 }
-.film-meta__year {
+.film__year {
   font-family: "Roboto";
   font-weight: 500;
   font-size: 20px;
@@ -37,18 +88,22 @@
   color: var(--accent);
   margin-right: 5px;
 }
-.film-meta__year::after {
+.film__year::before {
   content: "";
   display: inline-block;
   width: 2px;
-  height: auto;
+  height: 13px;
   margin-right: 5px;
+  background-color: var(--accent);
 }
-.film-meta__rating {
+.film__rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Roboto";
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.1666666667 px;
+  line-height: 1.1666666667;
   color: var(--mainWhite);
   width: 40px;
   height: 20px;
@@ -56,8 +111,10 @@
   background-color: var(--accent);
 }
 
-.container {
-  max-width: 1280px;
-  padding-left: 32px;
-  padding-right: 32px;
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
 }/*# sourceMappingURL=index.css.map */
