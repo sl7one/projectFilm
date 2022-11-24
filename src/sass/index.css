@@ -41,6 +41,7 @@ address {
 
 body {
   font-family: "Roboto", sans-serif;
+  background-color: #e9e9e9;
 }
 
 .container {
@@ -66,22 +67,70 @@ body {
   }
 }
 
-.film__image {
+.film {
   border-radius: 5px;
+  overflow: hidden;
+  background-color: var(--mainWhite);
+  display: inline-block;
+  transition-timing-function: ease-in-out;
+  transition-duration: 350ms;
+  transition-property: box-shadow, transform;
+}
+.film:hover {
+  box-shadow: 0px 2px 24px -5px rgba(0, 0, 0, 0.74);
+  transform: scale(1.02);
+}
+.film__image {
   margin-bottom: 12px;
+}
+@media screen and (min-width: 480px) {
+  .film__image {
+    max-width: 280px;
+    max-height: 400px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .film__image {
+    max-width: 335px;
+    max-height: 455px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .film__image {
+    max-width: 395px;
+    max-height: 575px;
+  }
 }
 .film__meta {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-bottom: 12px;
+  margin-left: 12px;
 }
 .film__title {
   font-family: "Roboto";
   font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2 px;
   text-transform: uppercase;
   color: var(--mainBlack);
+}
+@media screen and (min-width: 480px) {
+  .film__title {
+    font-size: 12px;
+    line-height: 1.3333333333;
+  }
+}
+@media screen and (min-width: 768px) {
+  .film__title {
+    font-size: 12px;
+    line-height: 1.3333333333;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .film__title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 .film__description {
   display: flex;
@@ -90,18 +139,50 @@ body {
 .film__genre {
   font-family: "Roboto";
   font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2 px;
   color: var(--accent);
   margin-right: 5px;
+}
+@media screen and (min-width: 480px) {
+  .film__genre {
+    font-size: 12px;
+    line-height: 1.3333333333;
+  }
+}
+@media screen and (min-width: 768px) {
+  .film__genre {
+    font-size: 12px;
+    line-height: 1.3333333333;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .film__genre {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 .film__year {
   font-family: "Roboto";
   font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2 px;
   color: var(--accent);
   margin-right: 5px;
+}
+@media screen and (min-width: 480px) {
+  .film__year {
+    font-size: 12px;
+    line-height: 1.3333333333;
+  }
+}
+@media screen and (min-width: 768px) {
+  .film__year {
+    font-size: 12px;
+    line-height: 1.3333333333;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .film__year {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 .film__year::before {
   content: "";
@@ -120,8 +201,8 @@ body {
   font-size: 12px;
   line-height: 1.1666666667;
   color: var(--mainWhite);
-  width: 40px;
-  height: 20px;
+  width: 36px;
+  height: 16px;
   border-radius: 5px;
   background-color: var(--accent);
 }

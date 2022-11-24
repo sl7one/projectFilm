@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 
-const API_KEY = 'ba9af9187d823167244a35c2fd918141';
+export const API_KEY = 'ba9af9187d823167244a35c2fd918141';
 const BASE_URL = `https://api.themoviedb.org/3`;
 const paramsObj = {
   language: 'en-US',
@@ -68,48 +68,36 @@ const searchParams = new URLSearchParams(paramsObj);
 
 export const request = {
   async popular() {
-    const API_KEY = 'ba9af9187d823167244a35c2fd918141';
-    const BASE_URL = `https://api.themoviedb.org/3`;
-
     try {
       const response = await axios.get(
         `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
       );
-
-      const arrayList = response.data.results;
-
-      console.log(
-        arrayList.map(e => {
-          console.log(e.title);
-        })
-      );
+      const { data } = response;
+      return data;
     } catch (error) {}
 
     // const res = render(results);
     // galleryEl.innerHTML = res;
     // console.log(render(results));
 
-    try {
-      const object = await axios.get(
-        `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
-      );
-      const { data } = object;
-      return data;
-    } catch (error) {
-      console.error('request', error);
-    }
+    // try {
+    //   const object = await axios.get(
+    //     `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
+    //   );
+    //   const { data } = object;
+    //   return data;
+    // } catch (error) {
+    //   console.error('request', error);
+    // }
   },
 
-  async genres(films) {
+  async genres() {
     try {
       const genres = await axios.get(
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
 
       const { data } = genres;
-      const { results } = films;
-
-      console.log(results);
       return data;
     } catch (error) {
       console.error(error);
@@ -126,9 +114,7 @@ export const request = {
         `${BASE_URL}/movie/76341?api_key=${API_KEY}`
       );
       console.log(response);
-
       const { data } = response;
-
       return data;
     } catch (error) {
       console.error(error);

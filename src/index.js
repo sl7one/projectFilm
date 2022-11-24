@@ -8,8 +8,6 @@ import { shema } from './js/shema';
 main();
 async function main() {
   const data = await request.popular();
-  const genres = await request.genres(data);
-  // console.log(genres);
-  render.print(data, markup.gallery);
+  const genres = await request.genres();
+  render.print(data, genres, markup.gallery);
 }
-request.popular()
