@@ -1,9 +1,16 @@
 export const localStorage = {
+<<<<<<< Updated upstream
 
 
   save(elem) {
     const LIST_FILM = `save-film`
     localStorage.setItem(LIST_FILM, JSON.stringify(elem));
+=======
+  elements: [],
+
+  save(elem) {
+    this.elements.push(elem);
+>>>>>>> Stashed changes
 
   },
   load(elem) {},
@@ -39,5 +46,9 @@ export const Notes = {
       })
       .join("");
     boxForNotes.innerHTML = newCodeNotes;
+<<<<<<< Updated upstream
+=======
+    localStorage.setItem(LIST_NOTES, JSON.stringify(this.elements));
+>>>>>>> Stashed changes
   },
 };
