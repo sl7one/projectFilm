@@ -3,6 +3,7 @@ import { filmId } from './js/film';
 import { markup } from './js/markup';
 import { render } from './js/render';
 import { request } from './js/requestAPI';
+import { shema } from './js/shema';
 
 main();
 async function main() {
