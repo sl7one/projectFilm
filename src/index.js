@@ -7,9 +7,9 @@ import { shema } from './js/shema';
 
 main();
 async function main() {
-  const data = await request.name();
-  console.log(data);
-
-  render.print(data);
+  const data = await request.popular();
+  const genres = await request.genres(data);
+  // console.log(genres);
+  render.print(data, markup.gallery);
 }
 request.popular()

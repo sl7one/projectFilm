@@ -1,17 +1,23 @@
 export const markup = {
   gallery(data) {
-    return data.reduce((acc, item) => {
+    // console.log(data);
+    const { results } = data;
+
+    return results.reduce((acc, film) => {
+      // console.log(film);
+      const { title } = film;
+
       return (acc += `<li class="gallery__item">
       <a class="film" href="#">
         <img
           class="film__image"
           src="./images/Rectangle 12.jpg"
-          alt="title"
+          alt="${title}"
           width="375"
           height="574"
         />
         <div class="film__meta">
-          <p class="film__title">GREYHOUND</p>
+          <p class="film__title">${title}</p>
           <p class="film__description">
             <span class="film__genre">Drama, Action</span>
             <span class="film__year">2020</span>

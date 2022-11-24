@@ -1,4 +1,9 @@
+import { markup } from './markup';
+
 export const render = {
-  print() {},
+  print(data, markupCallBack) {
+    // console.log(data);
+    const markup = markupCallBack(data);
+  },
   clear() {},
 };
