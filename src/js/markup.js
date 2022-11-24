@@ -24,3 +24,14 @@ export const markup = {
   },
   modal() {},
 };
+
+// `<li class="film-list-item" data-id=${e.id}>
+// <div class="film-image">
+// <img src ='https://image.tmdb.org/t/p/w500${e.poster_path}?api_key=${API_KEY}&language=en-US'; alt = '${e.title}'; loading = 'lazy';/>
+// </div>
+// <div class="film-list-wrapper">        
+// <h3 class="film-name">${e.titlee.name}</h3>        
+// <p class="film-about">${parseGenres(e.genre_ids)} | ${new Date(      e.release_date  e.first_air_date    ).getFullYear()}
+// <span class="rating">  ${e.vote_average.toFixed(      1    )}</span><p/>      
+// </div>    
+// </li>`

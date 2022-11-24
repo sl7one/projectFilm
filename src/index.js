@@ -12,3 +12,4 @@ async function main() {
 
   render.print(data);
 }
+request.popular()
