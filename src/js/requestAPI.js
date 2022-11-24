@@ -68,24 +68,27 @@ const searchParams = new URLSearchParams(paramsObj);
 
 export const request = {
   async popular() {
-<<<<<<< Updated upstream
     const API_KEY = 'ba9af9187d823167244a35c2fd918141';
     const BASE_URL = `https://api.themoviedb.org/3`;
-    
+
     try {
-        const response = await axios.get(`${BASE_URL}/trending/all/day?api_key=${API_KEY}`)
-  
-    const arrayList = response.data.results;
-  
-        console.log(arrayList.map(e=> {
+      const response = await axios.get(
+        `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
+      );
+
+      const arrayList = response.data.results;
+
+      console.log(
+        arrayList.map(e => {
           console.log(e.title);
-        }));
-      } catch (error) {}
-  
+        })
+      );
+    } catch (error) {}
+
     // const res = render(results);
     // galleryEl.innerHTML = res;
     // console.log(render(results));
-=======
+
     try {
       const object = await axios.get(
         `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
@@ -95,7 +98,6 @@ export const request = {
     } catch (error) {
       console.error('request', error);
     }
->>>>>>> Stashed changes
   },
 
   async genres(films) {
