@@ -26,12 +26,15 @@ const options = {
 };
 
 import { ref } from './js/ref';
-import { footer } from './js/footer';
+
 import { filmId } from './js/film';
 import { markup } from './js/markup';
 import { render } from './js/render';
 import { request } from './js/requestAPI';
 import { shema } from './js/shema';
+
+import './js/footer';
+import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
 const pagination = new Pagination('pagination', options);
 const page = pagination.getCurrentPage();
