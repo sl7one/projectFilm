@@ -1,5 +1,3 @@
-export const footer = () => console.log('hello footer');
-
 //import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import * as basicLightbox from 'basiclightbox';
 import sprite from '../images/icons.svg';
@@ -75,9 +73,9 @@ const markupTeam = `
         </div>      
 `;
 const linkFooter = document.querySelector('.js-team-modal');
-linkFooter.addEventListener('click', openModal);
+linkFooter.addEventListener('click', openModalTeam);
 const modalTeam = basicLightbox.create(markupTeam);
-function openModal(e) {
+function openModalTeam(e) {
   e.preventDefault();
   modalTeam.show();
 
