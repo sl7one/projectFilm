@@ -69,7 +69,7 @@ const markupTeam = `
                 </a>
                 <p class="team-name">Dan</p>
                 <p class="team-role">Developer</p></div>
-            </ul>
+            </div>
         </div>      
 `;
 const linkFooter = document.querySelector('.js-team-modal');

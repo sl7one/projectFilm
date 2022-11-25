@@ -83,7 +83,7 @@
 .modal-team {
   display: flex;
   flex-wrap: wrap;
-  margin: -20px;
+  padding: 10px;
   width: 240px;
   background-color: #f7f7f7;
   border-radius: 15px;
@@ -102,26 +102,51 @@
   flex-direction: column;
   align-items: center;
   margin: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 10px;
   width: calc((100% - 80px) / 2);
   @include tablet {
     width: calc((100% - 160px) / 4);
+    border-radius: 20px;
   }
   @include desktop {
     margin: 30px;
+    border-radius: 30px;
     width: calc((100% - 240px) / 4);
   }
 }
 .team-name{
   padding: 5px;
   font-family: Roboto;
-  font-weight: 700;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 15px;
+  font-style: oblique;
+  @include tablet{
+    font-weight: 500;
+    font-size: 15px;
+  }
+  @include desktop {
+    font-weight: 700;
+    font-size: 20px;
+  }
 }
 .team-role {
   font-family: Roboto;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 10px;
+  font-style: oblique;
   color: var(--accent);
+  margin-bottom: 10px;
+  @include tablet{
+    font-weight: 500;
+    font-size: 15px;
+  }
+  @include desktop {
+    font-size: 15px;
+  }
+}
+.team-git {
+  margin-top: 10px;
+  padding: 10px;
 }
 .icon-github {
   fill: var(--mainBlack);
