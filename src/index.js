@@ -35,6 +35,7 @@ import { render } from './js/render';
 import { request } from './js/requestAPI';
 import { shema } from './js/shema';
 import { modal } from './js/modal';
+import { modalMovie} from './js/modalMovie'
 import { normalizedValue } from './js/valueServis';
 
 const pagination = new Pagination('pagination', options);
@@ -57,7 +58,7 @@ async function main(page) {
   pagination.reset(data.total_results);
   render.print(data, genres, markup.gallery);
   //---------------модалка при клике на карточку-------------//
-  // modal();
+  modalMovie();
 }
 
 //---------------рендер фильмов по запросу-----------------//
@@ -97,5 +98,5 @@ async function onInputSabmit(event) {
   event.target.reset();
 
   //---------------модалка при клике на карточку-------------//
-  // modal();
+  modalMovie();
 }
