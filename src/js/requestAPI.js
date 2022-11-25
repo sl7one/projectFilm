@@ -4,7 +4,7 @@ export const API_KEY = 'ba9af9187d823167244a35c2fd918141';
 const BASE_URL = `https://api.themoviedb.org/3`;
 const paramsObj = {
   language: 'en-US',
-  page: 1,
+  page: 3,
   include_adult: false,
   query: '',
 };
@@ -70,9 +70,10 @@ export const request = {
   async popular() {
     try {
       const response = await axios.get(
-        `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
+        `${BASE_URL}/trending/all/day?api_key=${API_KEY}&page=2`
       );
       const { data } = response;
+      console.log(data);
       return data;
     } catch (error) {}
 
