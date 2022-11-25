@@ -3,6 +3,7 @@ export const markup = {
   gallery(data, genresDataBase) {
     //--------создаем нормализированную базу жанров ------//
     let newGenreBase = {};
+
     genresDataBase.genres.forEach(item => {
       newGenreBase[item.id] = item.name;
     });
@@ -12,11 +13,13 @@ export const markup = {
 
     //------------------------------------------------------//
     const { results } = data;
+
     //--------------запускаем редьюс для создания разметки-------------------------------------//
     return results.reduce((acc, film) => {
       //-----------------запускаем цикл для поска совпадений по жарнрам нормализированной базы и текущих жанров---------------------------------------//
       const arrayOfGenresName = [];
-      film.genre_ids.forEach(currenId => {
+      // console.log('film.genre_ids', film.genre_ids);
+      film?.genre_ids?.forEach(currenId => {
         const index = newGenreKeys.indexOf(currenId.toString());
         // console.log(newGenreKeys, currenId.toString());
         // console.log('');
@@ -25,15 +28,18 @@ export const markup = {
       // console.log(arrayOfGenresName);
       // console.log('');
       //---------------------------------------------------------//
-
+      console.log('film.poster_path', film.poster_path);
+      const defaultUrl =
+        'https://cdn-www.comingsoon.net/assets/uploads/2014/09/file_123131_0_defaultposterlarge.jpg';
+      const url = film.poster_path
+        ? `https://image.tmdb.org/t/p/w500${film.poster_path}?api_key=${API_KEY}&language=en-US"`
+        : defaultUrl;
       //----------------возвращаем аккумулированную разметку в метод редьюс---------------//
       return (acc += `<li class="gallery__item" data-id=${film.id}>
       <a class="film" href="#">
         <img
           class="film__image"
-          src="https://image.tmdb.org/t/p/w500${
-            film.poster_path
-          }?api_key=${API_KEY}&language=en-US"
+          src=${url}
           alt="${film.title || film.name}"
           loading = 'lazy'/>
         <div class="film__meta">
@@ -43,7 +49,7 @@ export const markup = {
             <span class="film__year">${parseInt(
               film.release_date || film.first_air_date
             )}</span>
-            <span class="film__rating">${film.vote_average.toFixed(1)}</span>
+            <span class="film__rating">${film?.vote_average?.toFixed(1)}</span>
           </p>
         </div>
       </a>

@@ -67,13 +67,13 @@ const searchParams = new URLSearchParams(paramsObj);
 // createPopular();
 
 export const request = {
-  async popular() {
+  async popular(page) {
     try {
       const response = await axios.get(
-        `${BASE_URL}/trending/all/day?api_key=${API_KEY}&page=2`
+        `${BASE_URL}/trending/all/day?api_key=${API_KEY}&page=${page}`
       );
       const { data } = response;
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {}
 
