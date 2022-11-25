@@ -62,14 +62,25 @@ async function main(page) {
 
 //---------------рендер фильмов по запросу-----------------//
 ref.form.addEventListener('submit', onInputSabmit);
+
+const loadMoreOueryPhotos = async event => {
+  const currentPage = event.page;
+  const data = await request.input(currentPage);
+  const genres = await request.genres();
+  render.print(data, genres, markup.gallery);
+};
+
 async function onInputSabmit(event) {
   event.preventDefault();
   const data = await request.input(normalizedValue(event));
   const genres = await request.genres();
 
-  // render.clear();
+  pagination.off('beforeMove', loadMorePopylarPhotos);
+  pagination.off('beforeMove', loadMoreOueryPhotos);
+  pagination.on('beforeMove', loadMoreOueryPhotos);
 
   render.print(data, genres, markup.gallery);
+
   //---------------модалка при клике на карточку-------------//
   // modal();
 }
