@@ -1,54 +1,39 @@
 export const localStorage = {
-<<<<<<< Updated upstream
+  //-----------------зімнні для роботи---------------------------------------------
+  elementsWatched: [],
+  elementsQueue:[],
+  WATCHED_LOCAL: "list-of-films-watched",
+  QUEUE_LOCAL: "list-of-films-queue",
+  boxForFilms: document.querySelector(".gallery"),
+// --------------------додаємо в список переглянутих----------------------------
+  watchedList(elem) {
 
+    this.elementsWatched.push(elem);
+    localStorage.setItem(this.WATCHED_LOCAL, JSON.stringify(this.elementsWatched));
 
-  save(elem) {
-    const LIST_FILM = `save-film`
-    localStorage.setItem(LIST_FILM, JSON.stringify(elem));
-=======
-  elements: [],
-
-  save(elem) {
-    this.elements.push(elem);
->>>>>>> Stashed changes
 
   },
-  load(elem) {},
-  check(elem) {},
-};
-export const Notes = {
-  elements: [],
+  // --------------------додаємо в список в черзі-------------------------------
+  queueList(elem) {
 
-  addNotes(elem) {
-    this.elements.push(elem);
-    this.createNotes(this.elements);
+    this.elementsQueue.push(elem);
+    localStorage.setItem(this.QUEUE_LOCAL, JSON.stringify(this.elementsQueue));
+
   },
+  checkLocal() {
 
-  removeNotes(elem) {
-    for (let i = 0; i < this.elements.length; i += 1) {
-      if (this.elements[i] === elem) {
-        this.elements.splice(i, 1);
-      }
+    // ------------------------------Перевіряємо список переглянутих----------------------------
+    if (JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))) {
+      this.elementsWatched.push(...JSON.parse(localStorage.getItem(this.WATCHED_LOCAL)));
+this.boxForFilms.innerHTML = (JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))).join('')
     }
-    this.createNotes(this.elements);
-  },
 
-  cleanNotes() {
-    this.elements = [];
-    localStorage.removeItem(LIST_NOTES);
-    boxForNotes.innerHTML = "";
-  },
-
-  createNotes(elements) {
-    const newCodeNotes = elements
-      .map((elem) => {
-        return makeTemplateNotes(elem);
-      })
-      .join("");
-    boxForNotes.innerHTML = newCodeNotes;
-<<<<<<< Updated upstream
-=======
-    localStorage.setItem(LIST_NOTES, JSON.stringify(this.elements));
->>>>>>> Stashed changes
+    // ------------------------------Перевіряємо список в черзі----------------------------------
+    if (JSON.parse(localStorage.getItem(this.QUEUE_LOCAL))) {
+      this.elementsQueue.push(...JSON.parse(localStorage.getItem(this.QUEUE_LOCAL)));
+      this.boxForFilms.insertAdjacentHTML("beforeend",(JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))).join(''))
+    }
+    //------------------------Якщо локад пустий - пуста секція------------------------------------
+    this.boxForFilms.innerHTML = ""
   },
 };
