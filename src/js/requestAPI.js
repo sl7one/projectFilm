@@ -109,12 +109,12 @@ export const request = {
   // galleryEl.innerHTML = res;
   // console.log(render(results));
 
-  async name() {
+  async input() {
     try {
       const response = await axios.get(
         `${BASE_URL}/movie/76341?api_key=${API_KEY}`
       );
-      console.log(response);
+      // console.log(response);
       const { data } = response;
       return data;
     } catch (error) {

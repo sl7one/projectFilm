@@ -35,6 +35,7 @@ import { render } from './js/render';
 import { request } from './js/requestAPI';
 import { shema } from './js/shema';
 import { modal } from './js/modal';
+import { normalizedValue } from './js/valueServis';
 
 const pagination = new Pagination('pagination', options);
 const page = pagination.getCurrentPage();
@@ -48,10 +49,27 @@ const loadMorePopylarPhotos = async event => {
 
 pagination.on('beforeMove', loadMorePopylarPhotos);
 
+//--------рендер популярных фильмов при загрузке-------------//
 main(page);
 async function main(page) {
   const data = await request.popular(page);
   const genres = await request.genres();
   pagination.reset(data.total_results);
   render.print(data, genres, markup.gallery);
+  //---------------модалка при клике на карточку-------------//
+  // modal();
+}
+
+//---------------рендер фильмов по запросу-----------------//
+ref.form.addEventListener('submit', onInputSabmit);
+async function onInputSabmit(event) {
+  event.preventDefault();
+  const data = await request.input(normalizedValue(event));
+  const genres = await request.genres();
+
+  // render.clear();
+
+  render.print(data, genres, markup.gallery);
+  //---------------модалка при клике на карточку-------------//
+  // modal();
 }
