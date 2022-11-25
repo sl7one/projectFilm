@@ -1,6 +1,4 @@
 .header {
-  // background-color: black;
-  // max-width: 1280px;
   padding-top: 40px;
   height: 230px;
   background-size: cover;
@@ -10,11 +8,10 @@
   @include retina {
     background-image: url('../images/index-header-bg-320@2x.jpg');
   }
-// @media screen and (min-width: 480px) and (max-width: 767px){
+
   @include tablet {
     height: 215px;
     background-size: cover;
-    // background-size: 768px;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url('../images/index-header-bg-768.jpg');
@@ -26,7 +23,6 @@
   @include desktop {
     background-image: url('../images/index-header-bg-1280.jpg');
     background-size: cover;
-    // background-size: 1280px;
     background-repeat: no-repeat;
     background-position: center;
     @include retina {
@@ -57,6 +53,31 @@
 
 .nav-list {
   display: flex;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 1.17;
+text-transform: uppercase;
+color: var(--mainWhite);
+}
+
+.nav-item {
+  padding-top: 10px;
+}
+
+.nav-item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.link.current::after {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #FF001B;
+  left: 0;
+  bottom: 0;
+  border-radius: 0px;
 }
 
 .input-container {
@@ -67,10 +88,21 @@
 .search-error-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 280px;
   justify-content: center;
-  @include mobile {
-    width: 280px;
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.search-error{
+font-weight: 400;
+font-size: 14px;
+line-height: 1.14;
+color: #FF001B;
+margin-top: 15px;
+@include tablet {
+    margin-top: 20px;
   }
 }
 
@@ -82,3 +114,13 @@
   display: none;
 }
 
+.logo-text{
+  font-weight: 500;
+font-size: 30px;
+line-height: 1.17;
+color:var(--mainWhite);
+display: none;
+@include tablet {
+    display: block;
+  }
+}
