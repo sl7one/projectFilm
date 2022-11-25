@@ -1,15 +1,16 @@
 import { API_KEY } from './requestAPI';
+
 export const markup = {
+  nameGenre: {},
+
   gallery(data, genresDataBase) {
     //--------создаем нормализированную базу жанров ------//
-    let newGenreBase = {};
-
-    genresDataBase.genres.forEach(item => {
-      newGenreBase[item.id] = item.name;
-    });
-
-    const newGenreKeys = Object.keys(newGenreBase);
-    const newGenreValues = Object.values(newGenreBase);
+          for (const elem of genresDataBase.genres) {
+            const id = Object.values(elem)[0];
+            const name = Object.values(elem)[1];
+    
+            this.nameGenre = { ...this.nameGenre, [id]: name };
+          }
 
     //------------------------------------------------------//
     const { results } = data;
@@ -17,17 +18,18 @@ export const markup = {
     //--------------запускаем редьюс для создания разметки-------------------------------------//
     return results.reduce((acc, film) => {
       //-----------------запускаем цикл для поска совпадений по жарнрам нормализированной базы и текущих жанров---------------------------------------//
-      const arrayOfGenresName = [];
-      // console.log('film.genre_ids', film.genre_ids);
-      film?.genre_ids?.forEach(currenId => {
-        const index = newGenreKeys.indexOf(currenId.toString());
-        console.log(newGenreKeys, currenId.toString());
-        console.log('');
-        arrayOfGenresName.push(newGenreValues[index]);
-      });
-      console.log(arrayOfGenresName);
-      console.log('');
-      //---------------------------------------------------------//
+
+      const genresName = [];
+      for (const elem of film.genre_ids) {
+        if (!this.nameGenre[`${elem}`]) {
+          continue;
+        }
+        genresName.push(this.nameGenre[`${elem}`]);  }
+
+        const genre = genresName.slice(0, 2).join(",");
+
+
+        //---------------------------------------------------------//
       // console.log('film.poster_path', film.poster_path);
       const defaultUrl =
         'https://cdn-www.comingsoon.net/assets/uploads/2014/09/file_123131_0_defaultposterlarge.jpg';
@@ -45,7 +47,7 @@ export const markup = {
         <div class="film__meta">
           <p class="film__title">${film.title || film.name}</p>
           <p class="film__description">
-            <span class="film__genre">Drama, Action</span>
+            <span class="film__genre">${genre}</span>
             <span class="film__year">${parseInt(
               film.release_date || film.first_air_date
             )}</span>
