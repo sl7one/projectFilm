@@ -2,21 +2,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
+
 .tui-custon {
-  font-size: 15px;
-  text-decoration: none;
-  width: 40px;
   display: flex;
-  font-weight: 500;
-  height: 40px;
-  color: #ff0;
-  background-color: #312ecc;
-  border-radius: 16px;
   align-items: center;
   justify-content: center;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  color: var(--mainBlack);
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+
 }
 
 .tui-custon-is-selected {
-  background-color: rgb(164, 10, 242);
+  background-color: var(--accent);
+  color:var(--mainWhite);
 }
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-last {
+  display: none;
+}
+
+body .tui-pagination .tui-next-is-ellip,
+body .tui-pagination .tui-prev-is-ellip {
+  border: none;
+}
+
+body .tui-pagination .tui-next,
+body .tui-pagination .tui-prev
+{
+  background-color: var(--mainWhite);
+  border: none;
+  width: 40px;
+  height: 40px;
+}
+body .tui-pagination .tui-first-child,
+.tui-pagination .tui-prev-is-ellip,
+body .tui-pagination .tui-last-child,
+.tui-pagination .tui-prev-is-ellip{
+  border-left: none;
+}
+
+
