@@ -19,6 +19,7 @@ export const markup = {
     return results.reduce((acc, film) => {
       //-----------------запускаем цикл для поска совпадений по жарнрам нормализированной базы и текущих жанров---------------------------------------//
 
+
       const genresName = [];
       for (const elem of film.genre_ids) {
         if (!this.nameGenre[`${elem}`]) {
@@ -30,6 +31,7 @@ export const markup = {
 
 
         //---------------------------------------------------------//
+
       // console.log('film.poster_path', film.poster_path);
       const defaultUrl =
         'https://cdn-www.comingsoon.net/assets/uploads/2014/09/file_123131_0_defaultposterlarge.jpg';

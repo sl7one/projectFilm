@@ -62,14 +62,40 @@ async function main(page) {
 
 //---------------рендер фильмов по запросу-----------------//
 ref.form.addEventListener('submit', onInputSabmit);
+
+const loadMoreOueryPhotos = async event => {
+  const currentPage = event.page;
+  const data = await request.input(currentPage);
+  const genres = await request.genres();
+  render.print(data, genres, markup.gallery);
+};
+
 async function onInputSabmit(event) {
   event.preventDefault();
-  const data = await request.input(normalizedValue(event));
+  request.query = event.currentTarget.elements[0].value.trim().toLowerCase();
+  // if (request.query === '') {
+  //   return ref.errorString.classList.remove('is-hidden');
+  // }
+
+  render.clear();
+  const data = await request.input();
+  if (data.results.length === 0) {
+    ref.errorString.classList.remove('is-hidden');
+    ref.pagination.classList.add('is-hidden');
+    return;
+  }
+  ref.errorString.classList.add('is-hidden');
+  ref.pagination.classList.remove('is-hidden');
   const genres = await request.genres();
 
-  // render.clear();
+  pagination.off('beforeMove', loadMorePopylarPhotos);
+  pagination.off('beforeMove', loadMoreOueryPhotos);
+  pagination.on('beforeMove', loadMoreOueryPhotos);
 
+  pagination.reset(data.total_results);
   render.print(data, genres, markup.gallery);
+  event.target.reset();
+
   //---------------модалка при клике на карточку-------------//
   // modal();
 }
