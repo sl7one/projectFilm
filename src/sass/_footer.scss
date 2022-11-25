@@ -111,22 +111,26 @@
     width: calc((100% - 240px) / 4);
   }
 }
+.team-name{
+  padding: 5px;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.team-role {
+  font-family: Roboto;
+  font-weight: 500;
+  color: var(--accent);
+}
 .icon-github {
-  // position: absolute;
-  // top: 65px;
-  // right: -10px;
   fill: var(--mainBlack);
-  @include tablet {
-    //top: 100px;
-  }
-  @include desktop {
-    //top: 120px;
-  }
   transform: scale(1);
   transition: transform, 250ms, cubic-bezier(0.4, 0, 0.2, 1);
-
+  transition: fill, 250ms, cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
+  fill: var(--accent);
   transform: scale(1.5);
   }
 }
