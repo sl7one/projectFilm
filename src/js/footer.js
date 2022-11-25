@@ -20,7 +20,7 @@ const markupTeam = `
                     </svg>
                 </a>
                 <p class="team-name">Sofia</p>
-                <p class="team-role">Scrum</p></div>
+                <p class="team-role">Scrum Master</p></div>
             <div class="team-card">
                 <a href="https://github.com/AlenaUshakova" target="_blank" class="team-git">
                     <svg class="icon-github" width="50" height="50">
