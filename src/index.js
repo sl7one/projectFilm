@@ -58,8 +58,10 @@ async function main(page) {
   pagination.reset(data.total_results);
   render.print(data, genres, markup.gallery);
   //---------------модалка при клике на карточку-------------//
-  modalMovie();
+  
 }
+
+modalMovie();
 
 //---------------рендер фильмов по запросу-----------------//
 ref.form.addEventListener('submit', onInputSabmit);

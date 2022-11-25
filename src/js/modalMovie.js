@@ -1,3 +1,5 @@
+export function modalMovie() {
+
 const refsModal = {
     
     modal: document.querySelector("[data-modal]"),
@@ -13,23 +15,16 @@ const refsModal = {
   };
   
   refsModal.closeModalBtn.addEventListener("click", toggleModal);
+  const data = request.movieID("1234")
+  debugger
+  console.dir(data)
 
-  getMovieInfo("777");
 
   function toggleModal() {
     refsModal.modal.classList.toggle("is-hidden");
     refsModal.closeModalBtn.removeEventListener("click", toggleModal);
   }
 
-  async function getMovieInfo(id) {
-    try {
-      const response = await axios.get(
-        `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
-      );
-      console.dir(response);
-      const { data } = response;
-      return data;
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  
+
+}
