@@ -21,12 +21,12 @@ export const markup = {
       // console.log('film.genre_ids', film.genre_ids);
       film?.genre_ids?.forEach(currenId => {
         const index = newGenreKeys.indexOf(currenId.toString());
-        console.log(newGenreKeys, currenId.toString());
-        console.log('');
+        // console.log(newGenreKeys, currenId.toString());
+        // console.log('');
         arrayOfGenresName.push(newGenreValues[index]);
       });
-      console.log(arrayOfGenresName);
-      console.log('');
+      // console.log(arrayOfGenresName);
+      // console.log('');
       //---------------------------------------------------------//
       // console.log('film.poster_path', film.poster_path);
       const defaultUrl =
