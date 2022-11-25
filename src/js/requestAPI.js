@@ -67,6 +67,7 @@ const searchParams = new URLSearchParams(paramsObj);
 // createPopular();
 
 export const request = {
+  query: '',
   async popular(page) {
     try {
       const response = await axios.get(
@@ -109,12 +110,25 @@ export const request = {
   // galleryEl.innerHTML = res;
   // console.log(render(results));
 
-  async input(query, page) {
+  async input(page) {
     try {
       const response = await axios.get(
-        `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false&page=${page}`
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${this.query}&include_adult=false&page=${page}`
       );
       const { data } = response;
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  async movieId(movie_id) {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+      );
+      const { data } = response;
+      console.log(data);
       return data;
     } catch (error) {
       console.error(error);

@@ -72,14 +72,29 @@ const loadMoreOueryPhotos = async event => {
 
 async function onInputSabmit(event) {
   event.preventDefault();
-  const data = await request.input(normalizedValue(event));
+  request.query = event.currentTarget.elements[0].value.trim().toLowerCase();
+  // if (request.query === '') {
+  //   return ref.errorString.classList.remove('is-hidden');
+  // }
+
+  render.clear();
+  const data = await request.input();
+  if (data.results.length === 0) {
+    ref.errorString.classList.remove('is-hidden');
+    ref.pagination.classList.add('is-hidden');
+    return;
+  }
+  ref.errorString.classList.add('is-hidden');
+  ref.pagination.classList.remove('is-hidden');
   const genres = await request.genres();
 
   pagination.off('beforeMove', loadMorePopylarPhotos);
   pagination.off('beforeMove', loadMoreOueryPhotos);
   pagination.on('beforeMove', loadMoreOueryPhotos);
 
+  pagination.reset(data.total_results);
   render.print(data, genres, markup.gallery);
+  event.target.reset();
 
   //---------------модалка при клике на карточку-------------//
   // modal();
