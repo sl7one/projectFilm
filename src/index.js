@@ -90,6 +90,11 @@ const loadMoreOueryPhotos = async event => {
 async function onInputSabmit(event) {
   event.preventDefault();
   request.query = event.currentTarget.elements[0].value.trim().toLowerCase();
+
+  if (request.query === '') {
+    return ref.errorString.classList.remove('is-hidden');
+  }
+
   render.clear();
   const data = await request.input();
   if (data.results.length === 0) {
