@@ -46,19 +46,35 @@
   align-items: center;
 }
 
+.logo-text {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
 .logo-link {
   display: flex;
   align-items: center;
+  color: var(--mainWhite);
+  transition: color 350ms linear;
+}
+
+.logo-link:hover {
+  color: var(--accent);
 }
 
 .nav-list {
   display: flex;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 1.17;
-text-transform: uppercase;
-color: var(--mainWhite);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: var(--mainWhite);
 }
 
 .nav-item {
@@ -69,14 +85,14 @@ color: var(--mainWhite);
 .nav-item:not(:last-child) {
   margin-right: 40px;
 }
-
+ 
 .link.current::after {
   content: '';
   position: absolute;
   display: block;
   width: 100%;
   height: 3px;
-  background-color: #FF001B;
+  background-color: #ff001b;
   bottom: -3px;
 }
 
@@ -87,31 +103,32 @@ color: var(--mainWhite);
 }
 
 .header-input {
-    border: 0;
-    border-bottom: 0.5px solid;
-    height: 20px;
-    width: 280px;
-    background-color: transparent;
-    border-color: white;
-    color: white;
-    outline: none;
-    @include tablet {
+  border: 0;
+  border-bottom: 0.5px solid;
+  height: 20px;
+  width: 280px;
+  background-color: transparent;
+  border-color: var(--mainWhite);
+  color: var(--mainWhite);
+  outline: none;
+  @include tablet {
     width: 335px;
   }
   @include desktop {
     width: 395px;
   }
-  }
+}
 
-  .input-btn{
-    position: relative;
-    right: -268px;
-    bottom: 20px;
-    @media screen and (min-width: 336px) {
-    right: 16px;
+.input-btn {
+  position: relative;
+  right: -261px;
+  bottom: 20px;
+  background-color: transparent;
+  @media screen and (min-width: 348px) {
+    right: 21px;
     bottom: 0px;
   }
-  }
+}
 
 .search-error-container {
   display: flex;
@@ -123,13 +140,13 @@ color: var(--mainWhite);
   }
 }
 
-.search-error{
-font-weight: 400;
-font-size: 14px;
-line-height: 1.14;
-color: #FF001B;
-margin-top: 15px;
-@include tablet {
+.search-error {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: #ff001b;
+  margin-top: 15px;
+  @include tablet {
     margin-top: 20px;
   }
 }
@@ -138,17 +155,8 @@ margin-top: 15px;
   margin-right: 10px;
 }
 
-.is-hidden {
-  display: none;
-}
+// .is-hidden {
+//   display: none;
+// }
 
-.logo-text{
-  font-weight: 500;
-font-size: 30px;
-line-height: 1.17;
-color:var(--mainWhite);
-display: none;
-@include tablet {
-    display: block;
-  }
-}
+
