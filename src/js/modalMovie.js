@@ -16,8 +16,6 @@ export const refsModal = {
   btnQueue: document.querySelector('#add-to-queue'),
 };
 
-console.log("Movie name: ", refsModal.movieName)
-
 export function showModal() {
   refsModal.modal.classList.remove('is-hidden');
 }
@@ -30,7 +28,7 @@ export async function modalMovie(event) {
   console.log("Event: ", event);
 
   let movieCard = event.target.parentNode;
-  console.dir(movieCard)
+  console.dir(movieCard);
   while (movieCard.nodeName !== "LI" && movieCard.className !== "gallery__item") {
     movieCard = movieCard.parentNode;
   }
