@@ -3,7 +3,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
-  visiblePages: 7,
+  visiblePages: 5,
   page: 1,
   centerAlign: false,
   template: {
@@ -35,8 +35,10 @@ import { render } from './js/render';
 import { request } from './js/requestAPI';
 import { shema } from './js/shema';
 import { modal } from './js/modal';
-import { modalMovie} from './js/modalMovie'
+import { refsModal, showModal, hideModal, modalMovie } from './js/modalMovie';
 import { normalizedValue } from './js/valueServis';
+
+hideModal();
 
 const pagination = new Pagination('pagination', options);
 const page = pagination.getCurrentPage();
@@ -58,10 +60,22 @@ async function main(page) {
   pagination.reset(data.total_results);
   render.print(data, genres, markup.gallery);
   //---------------модалка при клике на карточку-------------//
-  
+  ref.gallery.addEventListener('click', onClickCardGallery);
+  function onClickCardGallery(event) {
+    const nodeName = event.target.parentNode.nodeName;
+    if (nodeName === 'A' || nodeName === 'DIV' || nodeName === 'P') {
+      modalMovie(event);
+      showModal();
+    }
+    // --------------закрытие модалки------------------------//
+    refsModal.closeModalBtn.addEventListener('click', onClickCloseModalBtn, {
+      once: true,
+    });
+    function onClickCloseModalBtn(event) {
+      hideModal();
+    }
+  }
 }
-
-modalMovie();
 
 //---------------рендер фильмов по запросу-----------------//
 ref.form.addEventListener('submit', onInputSabmit);
@@ -76,10 +90,6 @@ const loadMoreOueryPhotos = async event => {
 async function onInputSabmit(event) {
   event.preventDefault();
   request.query = event.currentTarget.elements[0].value.trim().toLowerCase();
-  // if (request.query === '') {
-  //   return ref.errorString.classList.remove('is-hidden');
-  // }
-
   render.clear();
   const data = await request.input();
   if (data.results.length === 0) {
@@ -100,5 +110,8 @@ async function onInputSabmit(event) {
   event.target.reset();
 
   //---------------модалка при клике на карточку-------------//
-  modalMovie();
+  refsModal.gallery.addEventListener('click', onClickCardGallery);
+  function onClickCardGallery(event) {
+    modalMovie(event);
+  }
 }
