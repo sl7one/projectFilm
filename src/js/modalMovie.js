@@ -11,6 +11,8 @@ export const refsModal = {
   originalTitle: document.querySelector('.original-title-container'),
   genre: document.querySelector('.genre-container'),
   about: document.querySelector('.movie-info__about-title'),
+  btnWatched: document.querySelector('#add-to-watched'),
+  btnQueue: document.querySelector('#add-to-queue'),
 };
 
 export function showModal() {
