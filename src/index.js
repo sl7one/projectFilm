@@ -37,6 +37,7 @@ import { shema } from './js/shema';
 import { modal } from './js/modal';
 import { refsModal, showModal, hideModal, modalMovie } from './js/modalMovie';
 import { normalizedValue } from './js/valueServis';
+import { localStorage } from './js/localStorage';
 
 hideModal();
 
@@ -66,6 +67,7 @@ async function main(page) {
     if (nodeName === 'A' || nodeName === 'DIV' || nodeName === 'P') {
       modalMovie(event);
       showModal();
+      localStorageServise(event);
     }
     // --------------закрытие модалки------------------------//
     refsModal.closeModalBtn.addEventListener('click', onClickCloseModalBtn, {
@@ -118,5 +120,20 @@ async function onInputSabmit(event) {
   refsModal.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
     modalMovie(event);
+  }
+}
+
+//------------------------------манипуляции с локал стореджем------------------//
+function localStorageServise(event) {
+  const id = event.target.parentElement.parentElement.dataset.id;
+  //----сохраняем в просмотренные фильмы---------//
+  refsModal.btnWatched.addEventListener('click', onAddClick);
+  function onAddClick() {
+    localStorage.watchedList(id);
+  }
+  //----сохраняем в очередь фильмы---------//
+  refsModal.btnQueue.addEventListener('click', onQueueClick);
+  function onQueueClick() {
+    localStorage.queueList(id);
   }
 }
