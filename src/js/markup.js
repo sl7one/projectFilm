@@ -21,13 +21,17 @@ export const markup = {
 
 
       const genresName = [];
+      let genre = ``;
       for (const elem of film.genre_ids) {
         if (!this.nameGenre[`${elem}`]) {
           continue;
         }
+
         genresName.push(this.nameGenre[`${elem}`]);  }
 
-        const genre = genresName.slice(0, 2).join(",");
+        genre = genresName.length > 2?genresName.slice(0, 2).join(",") + `,Other`:genresName.slice(0, 2).join(",");
+       
+
 
 
         //---------------------------------------------------------//
@@ -49,7 +53,7 @@ export const markup = {
         <div class="film__meta">
           <p class="film__title">${film.title || film.name}</p>
           <p class="film__description">
-            <span class="film__genre">${genre}</span>
+            <span class="film__genre">${genre || `Other`}</span>
             <span class="film__year">${parseInt(
               film.release_date || film.first_air_date
             )}</span>
