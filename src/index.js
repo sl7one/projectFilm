@@ -127,22 +127,22 @@ async function onInputSabmit(event) {
 
 //------------------------------манипуляции с локал стореджем------------------//
 function localStorageServise(codeCardFilm) {
-//   const id = event.target.parentElement.parentElement.dataset.id;
-//   //----сохраняем в просмотренные фильмы---------//
 
-refsModal.btnWatched.addEventListener('click', onAddClick);
-  function onAddClick() {
+  //   //----сохраняем в просмотренные фильмы---------//
 
-   localStorageList.watchedList(codeCardFilm);
-  }
-
-//   //----сохраняем в очередь фильмы---------//
   refsModal.btnQueue.addEventListener('click', onQueueClick);
   function onQueueClick() {
-
     localStorageList.queueList(codeCardFilm);
+    refsModal.btnWatched.removeEventListener('click', onAddClick);
+  }
+
+  //   //----сохраняем в очередь фильмы---------//
+  refsModal.btnWatched.addEventListener('click', onAddClick);
+  function onAddClick() {
+    localStorageList.watchedList(codeCardFilm);
+    refsModal.btnQueue.removeEventListener('click', onQueueClick);
   }
 }
 
-localStorageList.checkLocalWatched()
-localStorageList.checkLocalQueue()
+// localStorageList.checkLocalWatched()
+// localStorageList.checkLocalQueue()
