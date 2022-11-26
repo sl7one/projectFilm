@@ -85,7 +85,7 @@
 .nav-item:not(:last-child) {
   margin-right: 40px;
 }
- 
+
 .link.current::after {
   content: '';
   position: absolute;
@@ -104,13 +104,18 @@
 
 .header-input {
   border: 0;
-  border-bottom: 0.5px solid;
   height: 20px;
-  width: 280px;
+  width: calc(100% - 16px);
   background-color: transparent;
   border-color: var(--mainWhite);
   color: var(--mainWhite);
   outline: none;
+}
+
+.input-wrap {
+  display: block;
+  position: relative;
+  width: 280px;
   @include tablet {
     width: 335px;
   }
@@ -118,16 +123,18 @@
     width: 395px;
   }
 }
+.input-form::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--mainWhite);
+  bottom: -3px;
+}
 
 .input-btn {
-  position: relative;
-  right: -261px;
-  bottom: 20px;
   background-color: transparent;
-  @media screen and (min-width: 348px) {
-    right: 21px;
-    bottom: 0px;
-  }
 }
 
 .search-error-container {
@@ -154,9 +161,4 @@
 .logo-svg {
   margin-right: 10px;
 }
-
-// .is-hidden {
-//   display: none;
-// }
-
 
