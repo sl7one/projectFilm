@@ -63,12 +63,10 @@ async function main(page) {
   //---------------модалка при клике на карточку-------------//
   ref.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
-    const nodeName = event.target.parentNode.nodeName;
-
     if (nodeName === 'A' || nodeName === 'DIV' || nodeName === 'P') {
       modalMovie(event);
       showModal();
-      localStorageServise(event.target.parentNode.parentNode);
+      localStorageServise(event.target.parentNode.innerHTML);
     }
 
     // --------------закрытие модалки------------------------//
@@ -122,12 +120,12 @@ async function onInputSabmit(event) {
   refsModal.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
     modalMovie(event);
+    localStorageServise(event.target.parentNode.innerHTML);
   }
 }
 
 //------------------------------манипуляции с локал стореджем------------------//
 function localStorageServise(codeCardFilm) {
-
   //   //----сохраняем в просмотренные фильмы---------//
 
   refsModal.btnQueue.addEventListener('click', onQueueClick);
