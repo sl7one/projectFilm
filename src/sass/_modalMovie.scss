@@ -123,8 +123,14 @@ button {
     font-size: 12px;
     font-weight: 500;
     line-height: 1.42;
+    width: 240px;
+
+    @include tablet {
+      width: 264px;
+    }
 
     @include desktop {
+      width: 391px;
         line-height: calc(20 / 12);
     }
 
@@ -217,7 +223,7 @@ button {
   .movie-info__facts {  
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, auto);
     gap: 8px 8px;
     grid-auto-flow: row;
     grid-template-areas:
