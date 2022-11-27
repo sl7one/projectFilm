@@ -7,8 +7,10 @@ export const localStorageList = {
   boxForFilms: document.querySelector('.gallery'),
   // --------------------додаємо в список переглянутих----------------------------
   watchedList(elem) {
-    const renderW = `<li class="gallery__item">${elem.innerHTML}</li>`;
-    console.log(renderW);
+    const filmsItem = elem.target.parentNode.parentNode;
+
+    const renderW = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
+
     if (
       localStorage.getItem(this.WATCHED_LOCAL) & this.elementsWatched.length
     ) {
@@ -28,7 +30,8 @@ export const localStorageList = {
   },
   // --------------------додаємо в список в черзі-------------------------------
   queueList(elem) {
-    const renderQ = `<li class="gallery__item">${elem.innerHTML}</li>`;
+    const filmsItem = elem.target.parentNode.parentNode;
+    const renderQ = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
 
     if (localStorage.getItem(this.QUEUE_LOCAL) & this.elementsQueue.length) {
       this.elementsQueue.push(
