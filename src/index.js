@@ -104,7 +104,7 @@ async function main(page) {
     if (event.target.nodeName === 'IMG') {
       modalMovie(event);
       showModal();
-      localStorageServise(event.target.parentNode.innerHTML);
+      localStorageServise(event);
     }
 
     // --------------закрытие модалки------------------------//
@@ -173,7 +173,7 @@ async function onInputSabmit(event) {
     if (event.target.nodeName === 'IMG') {
       modalMovie(event);
       showModal();
-      localStorageServise(event.target.parentNode.parentNode);
+      localStorageServise(event);
     }
   }
 }

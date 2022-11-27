@@ -8,7 +8,7 @@ export const localStorageList = {
   // --------------------додаємо в список переглянутих----------------------------
   watchedList(elem) {
     const renderW = `<li class="gallery__item">${elem.innerHTML}</li>`;
-    // console.log(renderW);
+    console.log(renderW);
     if (
       localStorage.getItem(this.WATCHED_LOCAL) & this.elementsWatched.length
     ) {
