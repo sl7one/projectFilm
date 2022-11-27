@@ -4,11 +4,15 @@ export const localStorageList = {
   elementsQueue: [],
   WATCHED_LOCAL: 'list-of-films-watched',
   QUEUE_LOCAL: 'list-of-films-queue',
-  boxForFilms: document.querySelector('.gallery'),
+  boxForFilmsWatched: document.querySelector('data-watched'),
+  boxForFilmsQueue: document.querySelector('data-queue'),
+
   // --------------------додаємо в список переглянутих----------------------------
   watchedList(elem) {
-    const renderW = `<li class="gallery__item">${elem.innerHTML}</li>`;
-    console.log(renderW);
+    const filmsItem = elem.target.parentNode.parentNode;
+
+    const renderW = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
+
     if (
       localStorage.getItem(this.WATCHED_LOCAL) & this.elementsWatched.length
     ) {
@@ -28,7 +32,8 @@ export const localStorageList = {
   },
   // --------------------додаємо в список в черзі-------------------------------
   queueList(elem) {
-    const renderQ = `<li class="gallery__item">${elem.innerHTML}</li>`;
+    const filmsItem = elem.target.parentNode.parentNode;
+    const renderQ = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
 
     if (localStorage.getItem(this.QUEUE_LOCAL) & this.elementsQueue.length) {
       this.elementsQueue.push(
@@ -50,7 +55,7 @@ export const localStorageList = {
         localStorage.getItem(this.WATCHED_LOCAL)
       ).join('');
     } else {
-      this.boxForFilms.innerHTML = '';
+      this.boxForFilmsWatched.innerHTML = '';
     }
   },
 
@@ -62,7 +67,7 @@ export const localStorageList = {
         localStorage.getItem(this.WATCHED_LOCAL)
       ).join('');
     } else {
-      this.boxForFilms.innerHTML = '';
+      this.boxForFilmsQueue.innerHTML = '';
     }
   },
 };
