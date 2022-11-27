@@ -26,7 +26,7 @@ export function hideModal() {
 
 export async function modalMovie(event) {
   // console.log("Event: ", event);
-
+  showModal();
   let movieCard = event.target.parentNode;
   // console.dir(movieCard);
   while (
