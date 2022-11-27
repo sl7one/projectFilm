@@ -7,33 +7,37 @@ export const localStorageList = {
   boxForFilms: document.querySelector('.gallery'),
   // --------------------додаємо в список переглянутих----------------------------
   watchedList(elem) {
-
-      const renderW = `<li class="gallery__item">${elem.innerHTML}</li>`
-
-    if (localStorage.getItem(this.WATCHED_LOCAL)&this.elementsWatched.length) {
-    
-      this.elementsWatched.push(JSON.parse(localStorage.getItem(this.WATCHED_LOCAL)));
+    const renderW = `<li class="gallery__item">${elem.innerHTML}</li>`;
+    // console.log(renderW);
+    if (
+      localStorage.getItem(this.WATCHED_LOCAL) & this.elementsWatched.length
+    ) {
+      this.elementsWatched.push(
+        JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))
+      );
     }
 
     if (this.elementsWatched.includes(renderW)) {
-      return
+      return;
     }
     this.elementsWatched.push(renderW);
     localStorage.setItem(
-      this.WATCHED_LOCAL, JSON.stringify(this.elementsWatched));
-
+      this.WATCHED_LOCAL,
+      JSON.stringify(this.elementsWatched)
+    );
   },
   // --------------------додаємо в список в черзі-------------------------------
   queueList(elem) {
-console.log(elem);
-    const renderQ = `<li class="gallery__item">${elem.innerHTML}</li>`
+    const renderQ = `<li class="gallery__item">${elem.innerHTML}</li>`;
 
-    if (localStorage.getItem(this.QUEUE_LOCAL)&this.elementsQueue.length) {
-      this.elementsQueue.push(JSON.parse(localStorage.getItem(this.QUEUE_LOCAL)));
+    if (localStorage.getItem(this.QUEUE_LOCAL) & this.elementsQueue.length) {
+      this.elementsQueue.push(
+        JSON.parse(localStorage.getItem(this.QUEUE_LOCAL))
+      );
     }
 
     if (this.elementsQueue.includes(renderQ)) {
-      return
+      return;
     }
 
     this.elementsQueue.push(renderQ);
@@ -42,7 +46,6 @@ console.log(elem);
   checkLocalWatched() {
     // ------------------------------Перевіряємо список переглянутих----------------------------
     if (JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))) {
-      
       this.boxForFilms.innerHTML = JSON.parse(
         localStorage.getItem(this.WATCHED_LOCAL)
       ).join('');
@@ -55,9 +58,9 @@ console.log(elem);
 
   checkLocalQueue() {
     if (JSON.parse(localStorage.getItem(this.QUEUE_LOCAL))) {
-      
-      this.boxForFilms.innerHTML = JSON.parse(localStorage.getItem(this.WATCHED_LOCAL)).join('')
-    
+      this.boxForFilms.innerHTML = JSON.parse(
+        localStorage.getItem(this.WATCHED_LOCAL)
+      ).join('');
     } else {
       this.boxForFilms.innerHTML = '';
     }

@@ -63,9 +63,7 @@ async function main(page) {
   //---------------модалка при клике на карточку-------------//
   ref.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
-    const nodeName = event.target.parentNode.nodeName;
-
-    if (nodeName === 'A' || nodeName === 'DIV' || nodeName === 'P') {
+    if (event.target.nodeName === 'IMG') {
       modalMovie(event);
       showModal();
       localStorageServise(event.target.parentNode.parentNode);
@@ -121,13 +119,15 @@ async function onInputSabmit(event) {
   //---------------модалка при клике на карточку-------------//
   refsModal.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
-    modalMovie(event);
+    if (event.target.nodeName === 'IMG') {
+      modalMovie(event);
+      showModal();
+      localStorageServise(event.target.parentNode.parentNode);
+    }
   }
 }
-
 //------------------------------манипуляции с локал стореджем------------------//
 function localStorageServise(codeCardFilm) {
-
   //   //----сохраняем в просмотренные фильмы---------//
 
   refsModal.btnQueue.addEventListener('click', onQueueClick);
