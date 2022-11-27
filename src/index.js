@@ -89,6 +89,11 @@ pagination.on('beforeMove', loadMorePopylarPhotos);
 //--------рендер популярных фильмов при загрузке-------------//
 main(page);
 async function main(page) {
+  Loading.hourglass({
+    clickToClose: true,
+    svgSize: '200px',
+    svgColor: '#ff6b01',
+  });
   const data = await request.popular(page);
   const genres = await request.genres();
   pagination.reset(data.total_results);
@@ -96,9 +101,7 @@ async function main(page) {
   //---------------модалка при клике на карточку-------------//
   ref.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
-
     if (event.target.nodeName === 'IMG') {
-
       modalMovie(event);
       showModal();
       localStorageServise(event.target.parentNode.innerHTML);
@@ -112,6 +115,7 @@ async function main(page) {
       hideModal();
     }
   }
+  Loading.remove();
 }
 
 //---------------рендер фильмов по запросу-----------------//
@@ -166,13 +170,11 @@ async function onInputSabmit(event) {
   //---------------модалка при клике на карточку-------------//
   refsModal.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
-
     if (event.target.nodeName === 'IMG') {
       modalMovie(event);
       showModal();
       localStorageServise(event.target.parentNode.parentNode);
     }
-
   }
 }
 //------------------------------манипуляции с локал стореджем------------------//
