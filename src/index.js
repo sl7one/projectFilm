@@ -88,7 +88,9 @@ async function main(page) {
   //---------------модалка при клике на карточку-------------//
   ref.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
-    if (nodeName === 'A' || nodeName === 'DIV' || nodeName === 'P') {
+
+    if (event.target.nodeName === 'IMG') {
+
       modalMovie(event);
       showModal();
       localStorageServise(event.target.parentNode.innerHTML);
@@ -144,11 +146,15 @@ async function onInputSabmit(event) {
   //---------------модалка при клике на карточку-------------//
   refsModal.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
-    modalMovie(event);
-    localStorageServise(event.target.parentNode.innerHTML);
+
+    if (event.target.nodeName === 'IMG') {
+      modalMovie(event);
+      showModal();
+      localStorageServise(event.target.parentNode.parentNode);
+    }
+
   }
 }
-
 //------------------------------манипуляции с локал стореджем------------------//
 function localStorageServise(codeCardFilm) {
   //   //----сохраняем в просмотренные фильмы---------//
