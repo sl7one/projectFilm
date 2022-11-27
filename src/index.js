@@ -37,7 +37,7 @@ import { shema } from './js/shema';
 import { modal } from './js/modal';
 import { refsModal, showModal, hideModal, modalMovie } from './js/modalMovie';
 import { normalizedValue } from './js/valueServis';
-import { localStorage } from './js/localStorage';
+import { localStorageList } from './js/localStorage';
 
 hideModal();
 
@@ -64,11 +64,13 @@ async function main(page) {
   ref.gallery.addEventListener('click', onClickCardGallery);
   function onClickCardGallery(event) {
     const nodeName = event.target.parentNode.nodeName;
+
     if (nodeName === 'A' || nodeName === 'DIV' || nodeName === 'P') {
       modalMovie(event);
       showModal();
-      localStorageServise(event);
+      localStorageServise(event.target.parentNode.parentNode);
     }
+
     // --------------закрытие модалки------------------------//
     refsModal.closeModalBtn.addEventListener('click', onClickCloseModalBtn, {
       once: true,
@@ -124,16 +126,23 @@ async function onInputSabmit(event) {
 }
 
 //------------------------------манипуляции с локал стореджем------------------//
-function localStorageServise(event) {
-  const id = event.target.parentElement.parentElement.dataset.id;
-  //----сохраняем в просмотренные фильмы---------//
-  refsModal.btnWatched.addEventListener('click', onAddClick);
-  function onAddClick() {
-    localStorage.watchedList(id);
-  }
-  //----сохраняем в очередь фильмы---------//
+function localStorageServise(codeCardFilm) {
+
+  //   //----сохраняем в просмотренные фильмы---------//
+
   refsModal.btnQueue.addEventListener('click', onQueueClick);
   function onQueueClick() {
-    localStorage.queueList(id);
+    localStorageList.queueList(codeCardFilm);
+    refsModal.btnWatched.removeEventListener('click', onAddClick);
+  }
+
+  //   //----сохраняем в очередь фильмы---------//
+  refsModal.btnWatched.addEventListener('click', onAddClick);
+  function onAddClick() {
+    localStorageList.watchedList(codeCardFilm);
+    refsModal.btnQueue.removeEventListener('click', onQueueClick);
   }
 }
+
+// localStorageList.checkLocalWatched()
+// localStorageList.checkLocalQueue()

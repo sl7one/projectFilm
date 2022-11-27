@@ -8,8 +8,8 @@ export const markup = {
           for (const elem of genresDataBase.genres) {
             const id = Object.values(elem)[0];
             const name = Object.values(elem)[1];
-    
-            this.nameGenre = { ...this.nameGenre, [id]: name };
+            
+    this.nameGenre = { ...this.nameGenre, [id]: name};
           }
 
     //------------------------------------------------------//
@@ -29,7 +29,7 @@ export const markup = {
 
         genresName.push(this.nameGenre[`${elem}`]);  }
 
-        genre = genresName.length > 2?genresName.slice(0, 2).join(",") + `,Other`:genresName.slice(0, 2).join(",");
+        genre = genresName.length > 2?genresName.slice(0, 2).join(", ") + `, Other`:genresName.slice(0, 2).join(",");
        
 
 
