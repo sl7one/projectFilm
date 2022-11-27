@@ -5,12 +5,12 @@ export const markup = {
 
   gallery(data, genresDataBase) {
     //--------создаем нормализированную базу жанров ------//
-          for (const elem of genresDataBase.genres) {
-            const id = Object.values(elem)[0];
-            const name = Object.values(elem)[1];
-            
-    this.nameGenre = { ...this.nameGenre, [id]: name};
-          }
+    for (const elem of genresDataBase.genres) {
+      const id = Object.values(elem)[0];
+      const name = Object.values(elem)[1];
+
+      this.nameGenre = { ...this.nameGenre, [id]: name };
+    }
 
     //------------------------------------------------------//
     const { results } = data;
@@ -19,7 +19,6 @@ export const markup = {
     return results.reduce((acc, film) => {
       //-----------------запускаем цикл для поска совпадений по жарнрам нормализированной базы и текущих жанров---------------------------------------//
 
-
       const genresName = [];
       let genre = ``;
       for (const elem of film.genre_ids) {
@@ -27,14 +26,15 @@ export const markup = {
           continue;
         }
 
-        genresName.push(this.nameGenre[`${elem}`]);  }
+        genresName.push(this.nameGenre[`${elem}`]);
+      }
 
-        genre = genresName.length > 2?genresName.slice(0, 2).join(", ") + `, Other`:genresName.slice(0, 2).join(",");
-       
+      genre =
+        genresName.length > 2
+          ? genresName.slice(0, 2).join(', ') + `, Other`
+          : genresName.slice(0, 2).join(',');
 
-
-
-        //---------------------------------------------------------//
+      //---------------------------------------------------------//
 
       // console.log('film.poster_path', film.poster_path);
       const defaultUrl =
@@ -51,7 +51,9 @@ export const markup = {
           alt="${film.title || film.name}"
           loading = 'lazy'/>
         <div class="film__meta">
-          <p class="film__title">${film.title || film.name}</p>
+          <p class="film__title js-tooltip"><span class="is-hidden js-tooltiptext">${
+            film.title || film.name
+          }</span>${cutString(film.title || film.name)}</p>
           <p class="film__description">
             <span class="film__genre">${genre || `Other`}</span>
             <span class="film__year">${parseInt(
@@ -67,6 +69,17 @@ export const markup = {
 
   modal() {},
 };
+
+function cutString(name) {
+  filmName = '';
+  if (name.length < 35) {
+    return name;
+  }
+  if (name.length >= 35) {
+    // ref.tooltip.classList.remove('is-hidden');
+    return (filmName = name.slice(0, 31) + '...');
+  }
+}
 
 // `<li class="gallery__item">
 //       <a class="film" href="#">
