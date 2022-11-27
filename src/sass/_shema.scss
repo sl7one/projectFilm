@@ -1,0 +1,14 @@
+.theme-btn {
+  width: 100px;
+  height: 30px;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: translate(-50%, 20px);
+  }
+}
