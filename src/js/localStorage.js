@@ -4,7 +4,9 @@ export const localStorageList = {
   elementsQueue: [],
   WATCHED_LOCAL: 'list-of-films-watched',
   QUEUE_LOCAL: 'list-of-films-queue',
-  boxForFilms: document.querySelector('.gallery'),
+  boxForFilmsWatched: document.querySelector('data-watched'),
+  boxForFilmsQueue: document.querySelector('data-queue'),
+
   // --------------------додаємо в список переглянутих----------------------------
   watchedList(elem) {
     const filmsItem = elem.target.parentNode.parentNode;
@@ -53,7 +55,7 @@ export const localStorageList = {
         localStorage.getItem(this.WATCHED_LOCAL)
       ).join('');
     } else {
-      this.boxForFilms.innerHTML = '';
+      this.boxForFilmsWatched.innerHTML = '';
     }
   },
 
@@ -65,7 +67,7 @@ export const localStorageList = {
         localStorage.getItem(this.WATCHED_LOCAL)
       ).join('');
     } else {
-      this.boxForFilms.innerHTML = '';
+      this.boxForFilmsQueue.innerHTML = '';
     }
   },
 };
