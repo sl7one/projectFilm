@@ -22,6 +22,7 @@ const opts = {
 };
 const target = document.getElementById('foo');
 const spinner = new Spinner(opts).spin(target);
+
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 const options = {
@@ -49,6 +50,7 @@ const options = {
   },
 };
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 import './js/footer';
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
@@ -71,9 +73,15 @@ const page = pagination.getCurrentPage();
 
 const loadMorePopylarPhotos = async event => {
   const currentPage = event.page;
+  Loading.hourglass({
+    clickToClose: true,
+    svgSize: '200px',
+    svgColor: '#ff6b01',
+  });
   const data = await request.popular(currentPage);
   const genres = await request.genres();
   render.print(data, genres, markup.gallery);
+  Loading.remove();
 };
 
 pagination.on('beforeMove', loadMorePopylarPhotos);
@@ -109,9 +117,15 @@ ref.form.addEventListener('submit', onInputSabmit);
 
 const loadMoreOueryPhotos = async event => {
   const currentPage = event.page;
+  Loading.hourglass({
+    clickToClose: true,
+    svgSize: '200px',
+    svgColor: '#ff6b01',
+  });
   const data = await request.input(currentPage);
   const genres = await request.genres();
   render.print(data, genres, markup.gallery);
+  Loading.remove();
 };
 
 async function onInputSabmit(event) {
@@ -121,12 +135,17 @@ async function onInputSabmit(event) {
   if (request.query === '') {
     return ref.errorString.classList.remove('is-hidden');
   }
-
+  Loading.hourglass({
+    clickToClose: true,
+    svgSize: '200px',
+    svgColor: '#ff6b01',
+  });
   render.clear();
   const data = await request.input();
   if (data.results.length === 0) {
     ref.errorString.classList.remove('is-hidden');
     ref.pagination.classList.add('is-hidden');
+    Loading.remove();
     return;
   }
   ref.errorString.classList.add('is-hidden');
@@ -139,6 +158,7 @@ async function onInputSabmit(event) {
 
   pagination.reset(data.total_results);
   render.print(data, genres, markup.gallery);
+  Loading.remove();
   event.target.reset();
 
   //---------------модалка при клике на карточку-------------//
