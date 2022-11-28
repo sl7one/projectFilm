@@ -104,9 +104,9 @@ async function main(page) {
       const data = await request.movieId(
         event.target.parentNode.parentNode.dataset.id
       );
-      modalMovie(event);
-      showModal();
-      // render.lightBoxModal(data, markup.markupModal); //--------не трогать
+      // modalMovie(event);
+      // showModal();
+      render.lightBoxModal(data, markup.markupModal); //--------не трогать
       localStorageServise(event);
     }
 
