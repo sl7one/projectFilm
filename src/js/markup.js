@@ -9,7 +9,7 @@ export const markup = {
       const id = Object.values(elem)[0];
       const name = Object.values(elem)[1];
 
-      this.nameGenre = { ...this.nameGenre, [id]: name };
+      markup.nameGenre = { ...markup.nameGenre, [id]: name };
     }
 
     //------------------------------------------------------//
@@ -22,11 +22,11 @@ export const markup = {
       const genresName = [];
       let genre = ``;
       for (const elem of film.genre_ids) {
-        if (!this.nameGenre[`${elem}`]) {
+        if (!markup.nameGenre[`${elem}`]) {
           continue;
         }
 
-        genresName.push(this.nameGenre[`${elem}`]);
+        genresName.push(markup.nameGenre[`${elem}`]);
       }
 
       genre =
