@@ -4,8 +4,6 @@ export const localStorageList = {
   elementsQueue: [],
   WATCHED_LOCAL: 'list-of-films-watched',
   QUEUE_LOCAL: 'list-of-films-queue',
-  boxForFilmsWatched: document.querySelector('data-watched'),
-  boxForFilmsQueue: document.querySelector('data-queue'),
 
   // --------------------додаємо в список переглянутих----------------------------
   watchedList(elem) {
@@ -48,26 +46,26 @@ export const localStorageList = {
     this.elementsQueue.push(renderQ);
     localStorage.setItem(this.QUEUE_LOCAL, JSON.stringify(this.elementsQueue));
   },
-  checkLocalWatched() {
+  checkLocalWatched(elem) {
     // ------------------------------Перевіряємо список переглянутих----------------------------
-    if (JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))) {
-      this.boxForFilms.innerHTML = JSON.parse(
+    if (localStorage.getItem(this.WATCHED_LOCAL)) {
+      elem.innerHTML = JSON.parse(
         localStorage.getItem(this.WATCHED_LOCAL)
       ).join('');
     } else {
-      this.boxForFilmsWatched.innerHTML = '';
+      elem.innerHTML = '';
     }
   },
 
   // ------------------------------Перевіряємо список в черзі----------------------------------
 
-  checkLocalQueue() {
+  checkLocalQueue(elem) {
     if (JSON.parse(localStorage.getItem(this.QUEUE_LOCAL))) {
-      this.boxForFilms.innerHTML = JSON.parse(
-        localStorage.getItem(this.WATCHED_LOCAL)
-      ).join('');
+      elem.innerHTML = JSON.parse(localStorage.getItem(this.QUEUE_LOCAL)).join(
+        ''
+      );
     } else {
-      this.boxForFilmsQueue.innerHTML = '';
+      elem.innerHTML = '';
     }
   },
 };
