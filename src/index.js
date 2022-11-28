@@ -78,6 +78,7 @@ const loadMorePopylarPhotos = async event => {
     svgSize: '200px',
     svgColor: '#ff6b01',
   });
+  render.clear();
   const data = await request.popular(currentPage);
   const genres = await request.genres();
   render.print(data, genres, markup.gallery);
@@ -94,6 +95,7 @@ async function main(page) {
     svgSize: '200px',
     svgColor: '#ff6b01',
   });
+  render.clear();
   const data = await request.popular(page);
   const genres = await request.genres();
   pagination.reset(data.total_results);
@@ -128,6 +130,7 @@ const loadMoreOueryPhotos = async event => {
     svgSize: '200px',
     svgColor: '#ff6b01',
   });
+  render.clear();
   const data = await request.input(currentPage);
   const genres = await request.genres();
   render.print(data, genres, markup.gallery);
