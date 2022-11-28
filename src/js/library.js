@@ -1,3 +1,6 @@
+import './footer';
+import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
+
 import { ref } from './ref';
 import { markup } from './markup';
 import { render } from './render';
@@ -5,7 +8,6 @@ import { request } from './requestAPI';
 import { shema } from './shema';
 import { refsModal, showModal, hideModal, modalMovie } from './modalMovie';
 import { localStorageList } from './localStorage';
-
 
 const boxForFilmsWatched = document.querySelector('.gallery.watched');
 const boxForFilmsQueue = document.querySelector('.gallery.queue');
@@ -27,4 +29,3 @@ const onBtnQueueClick = () => {
 
 btnForFilmsWatched.addEventListener('click', onBtnWatchedClick);
 btnForFilmsQueue.addEventListener('click', onBtnQueueClick);
-
