@@ -6,6 +6,7 @@ import { shema } from './shema';
 import { refsModal, showModal, hideModal, modalMovie } from './modalMovie';
 import { localStorageList } from './localStorage';
 
+
 const boxForFilmsWatched = document.querySelector('.gallery.watched');
 const boxForFilmsQueue = document.querySelector('.gallery.queue');
 const btnForFilmsWatched = document.querySelector('.lib-btn.watched');
@@ -26,3 +27,4 @@ const onBtnQueueClick = () => {
 
 btnForFilmsWatched.addEventListener('click', onBtnWatchedClick);
 btnForFilmsQueue.addEventListener('click', onBtnQueueClick);
+
