@@ -14,6 +14,7 @@ const boxForFilmsQueue = document.querySelector('.gallery.queue');
 const btnForFilmsWatched = document.querySelector('.lib-btn.watched');
 const btnForFilmsQueue = document.querySelector('.lib-btn.queue');
 
+
 const onBtnWatchedClick = () => {
   boxForFilmsQueue.innerHTML = '';
   boxForFilmsWatched.innerHTML = '';
