@@ -51,7 +51,7 @@ export const markup = {
           alt="${film.title || film.name}"
           loading = 'lazy'/>
         <div class="film__meta">
-          <p class="film__title js-tooltip"><span class="is-hidden js-tooltiptext">${
+          <p class="film__title js-tooltip"><span class="js-tooltiptext">${
             film.title || film.name
           }</span>${cutString(film.title || film.name)}</p>
           <p class="film__description">
@@ -81,6 +81,10 @@ function cutString(name) {
   }
 }
 
+// if (film.title.length || film.name.length >= 35) {
+//   ref.tooltip.classList.remove('is-hidden');
+//   return;
+// }
 // `<li class="gallery__item">
 //       <a class="film" href="#">
 //         <img

@@ -74,7 +74,7 @@ export const request = {
         `${BASE_URL}/trending/all/day?api_key=${API_KEY}&page=${page}`
       );
       const { data } = response;
-      // console.log(data);
+      console.log(data);
       return data;
     } catch (error) {}
 
