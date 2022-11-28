@@ -189,14 +189,26 @@ async function onInputSabmit(event) {
 function localStorageServise(codeCardFilm) {
   //   //----сохраняем в просмотренные фильмы---------//
 
-  refsModal.btnQueue.addEventListener('click', onQueueClick);
+  const lightBoxQueueBtn = document.querySelector(
+    '.basicLightbox  #add-to-queue'
+  );
+  (lightBoxQueueBtn || refsModal.btnQueue).addEventListener(
+    'click',
+    onQueueClick
+  );
   function onQueueClick() {
     localStorageList.queueList(codeCardFilm);
     refsModal.btnWatched.removeEventListener('click', onAddClick);
   }
 
   //   //----сохраняем в очередь фильмы---------//
-  refsModal.btnWatched.addEventListener('click', onAddClick);
+  const lightBoxAddBtn = document.querySelector(
+    '.basicLightbox  #add-to-watched'
+  );
+  (lightBoxAddBtn || refsModal.btnWatched).addEventListener(
+    'click',
+    onAddClick
+  );
   function onAddClick() {
     localStorageList.watchedList(codeCardFilm);
     refsModal.btnQueue.removeEventListener('click', onQueueClick);
