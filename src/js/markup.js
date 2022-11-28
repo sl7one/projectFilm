@@ -32,7 +32,7 @@ export const markup = {
       genre =
         genresName.length > 2
           ? genresName.slice(0, 2).join(', ') + `, Other`
-          : genresName.slice(0, 2).join(',');
+          : genresName.slice(0, 2).join(', ');
 
       //---------------------------------------------------------//
 
