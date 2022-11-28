@@ -61,12 +61,12 @@ import { markup } from './js/markup';
 import { render } from './js/render';
 import { request } from './js/requestAPI';
 import { shema } from './js/shema';
-import { modal } from './js/modal';
+// import { modal } from './js/modal';
 import { refsModal, showModal, hideModal, modalMovie } from './js/modalMovie';
 import { normalizedValue } from './js/valueServis';
 import { localStorageList } from './js/localStorage';
 
-hideModal();
+// hideModal();
 
 const pagination = new Pagination('pagination', options);
 const page = pagination.getCurrentPage();
@@ -104,7 +104,7 @@ async function main(page) {
     if (event.target.nodeName === 'IMG') {
       modalMovie(event);
       showModal();
-      localStorageServise(event.target.parentNode.innerHTML);
+      localStorageServise(event);
     }
 
     // --------------закрытие модалки------------------------//
@@ -173,7 +173,7 @@ async function onInputSabmit(event) {
     if (event.target.nodeName === 'IMG') {
       modalMovie(event);
       showModal();
-      localStorageServise(event.target.parentNode.parentNode);
+      localStorageServise(event);
     }
   }
 }
