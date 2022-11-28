@@ -56,17 +56,13 @@ import './js/footer';
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
 import { ref } from './js/ref';
-import { filmId } from './js/film';
 import { markup } from './js/markup';
 import { render } from './js/render';
 import { request } from './js/requestAPI';
 import { shema } from './js/shema';
 // import { modal } from './js/modal';
 import { refsModal, showModal, hideModal, modalMovie } from './js/modalMovie';
-import { normalizedValue } from './js/valueServis';
 import { localStorageList } from './js/localStorage';
-
-// hideModal();
 
 const pagination = new Pagination('pagination', options);
 const page = pagination.getCurrentPage();
@@ -102,10 +98,15 @@ async function main(page) {
   render.print(data, genres, markup.gallery);
   //---------------модалка при клике на карточку-------------//
   ref.gallery.addEventListener('click', onClickCardGallery);
-  function onClickCardGallery(event) {
+  async function onClickCardGallery(event) {
+    event.preventDefault();
     if (event.target.nodeName === 'IMG') {
+      const data = await request.movieId(
+        event.target.parentNode.parentNode.dataset.id
+      );
       modalMovie(event);
       showModal();
+      // render.lightBoxModal(data, markup.markupModal); //--------не трогать
       localStorageServise(event);
     }
 
@@ -172,10 +173,14 @@ async function onInputSabmit(event) {
 
   //---------------модалка при клике на карточку-------------//
   refsModal.gallery.addEventListener('click', onClickCardGallery);
-  function onClickCardGallery(event) {
+  async function onClickCardGallery(event) {
     if (event.target.nodeName === 'IMG') {
+      const data = await request.movieId(
+        event.target.parentNode.parentNode.dataset.id
+      );
       modalMovie(event);
       showModal();
+      // render.lightBoxModal(data, markup.markupModal);  ///----- не трогать
       localStorageServise(event);
     }
   }
@@ -197,6 +202,3 @@ function localStorageServise(codeCardFilm) {
     refsModal.btnQueue.removeEventListener('click', onQueueClick);
   }
 }
-
-// localStorageList.checkLocalWatched()
-// localStorageList.checkLocalQueue()

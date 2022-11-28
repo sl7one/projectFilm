@@ -9,15 +9,16 @@ export const localStorageList = {
   watchedList(elem) {
     const filmsItem = elem.target.parentNode.parentNode;
 
-    const renderW = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
-
     if (
-      localStorage.getItem(this.WATCHED_LOCAL) & this.elementsWatched.length
+      localStorage.getItem(this.WATCHED_LOCAL) &&
+      this.elementsWatched.length === 0
     ) {
       this.elementsWatched.push(
-        JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))
+        ...JSON.parse(localStorage.getItem(this.WATCHED_LOCAL))
       );
     }
+
+    const renderW = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
 
     if (this.elementsWatched.includes(renderW)) {
       return;
@@ -31,13 +32,17 @@ export const localStorageList = {
   // --------------------додаємо в список в черзі-------------------------------
   queueList(elem) {
     const filmsItem = elem.target.parentNode.parentNode;
-    const renderQ = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
 
-    if (localStorage.getItem(this.QUEUE_LOCAL) & this.elementsQueue.length) {
+    if (
+      localStorage.getItem(this.QUEUE_LOCAL) &&
+      this.elementsQueue.length === 0
+    ) {
       this.elementsQueue.push(
-        JSON.parse(localStorage.getItem(this.QUEUE_LOCAL))
+        ...JSON.parse(localStorage.getItem(this.QUEUE_LOCAL))
       );
     }
+
+    const renderQ = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
 
     if (this.elementsQueue.includes(renderQ)) {
       return;
