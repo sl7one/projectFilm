@@ -26,6 +26,10 @@ refsModal.closeModalBtn.addEventListener("click", hideModal);
 document.addEventListener("keydown", (event) => {
   if (event.code === "Escape") { hideModal() }
 } )
+document.addEventListener("click", (event)=> {
+  if (event.target.className === "backdrop") { hideModal() }
+
+})
 
 export function showModal() {
 
