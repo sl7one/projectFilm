@@ -35,9 +35,14 @@ export function showModal() {
   const body = document.body;
   refsModal.mainContainer.style.overflow = "hidden";
   body.style.overflow = "hidden";
-  refsModal.modal.overflow = "scroll";
+  refsModal.modal.overflowY = "scroll";
   //window.scrollTo(offsetX, offsetY);
   refsModal.backdrop.classList.remove('is-hidden');
+
+  // if (refsModal.modal.offsetHeight > window.innerHeight) {
+  //   refsModal.modal.style.top = "5px";
+  //   refsModal.modal.style.transform = "none";
+  // }
 }
 
 export function hideModal() {
@@ -63,10 +68,6 @@ export async function modalMovie(event) {
     movieCard = movieCard.parentNode;
   }
   const id = movieCard.dataset.id;
-
-  console.dir(refsModal.modal)
-  debugger
-  
 
   const data = await request.movieId(id);
 
