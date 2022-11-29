@@ -63,7 +63,7 @@ import { shema } from './js/shema';
 // import { modal } from './js/modal';
 import { refsModal, showModal, hideModal, modalMovie } from './js/modalMovie';
 import { localStorageList } from './js/localStorage';
-
+import { randomModal } from './js/randomModal';
 const pagination = new Pagination('pagination', options);
 const page = pagination.getCurrentPage();
 
