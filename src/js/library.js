@@ -1,6 +1,8 @@
 import './footer';
 import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 import { ref } from './ref';
 import { markup } from './markup';
 import { render } from './render';
@@ -35,20 +37,27 @@ document.querySelector('[data-queue]').addEventListener('click', onTargetClick);
 
 async function onTargetClick(event) {
   if (event.target.nodeName === 'IMG') {
-    const data = await request.movieId(
-      event.target.parentNode.parentNode.dataset.id
-    );
-    modalMovie(event);
-    showModal();
-    // render.lightBoxModal(data, markup.markupModal); //--------не трогать
-    const btns = document.querySelectorAll(
-      '.basicLightbox  .movie-info__wrapper [type="button"]'
-    );
+    // const data = await request.movieId(
+    //   event.target.parentNode.parentNode.dataset.id
+    // );
+    await modalMovie(event);
+    try {
+      Loading.hourglass({
+        clickToClose: true,
+        svgSize: '200px',
+        svgColor: '#ff6b01',
+      });
+      showModal();
+      // render.lightBoxModal(data, markup.markupModal); //--------не трогать
+      const btns = document.querySelectorAll(
+        '.movie-info__wrapper  .button-wrapper [type="button"]'
+      );
 
-    // btns[0].style.backgroundColor = 'green';
-    // btns[0].hidden = true;
-
-    btns[0].remove();
-    btns[1].remove();
+      btns[0].remove();
+      btns[1].remove();
+    } catch (e) {
+    } finally {
+      Loading.remove();
+    }
   }
 }

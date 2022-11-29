@@ -98,12 +98,12 @@ async function main(page) {
   render.print(data, genres, markup.gallery);
   //---------------модалка при клике на карточку-------------//
   ref.gallery.addEventListener('click', onClickCardGallery);
-  async function onClickCardGallery(event) {
+  function onClickCardGallery(event) {
     event.preventDefault();
     if (event.target.nodeName === 'IMG') {
-      const data = await request.movieId(
-        event.target.parentNode.parentNode.dataset.id
-      );
+      // const data = await request.movieId(
+      //   event.target.parentNode.parentNode.dataset.id
+      // );
       modalMovie(event);
       showModal();
       // render.lightBoxModal(data, markup.markupModal); //--------не трогать
@@ -173,14 +173,14 @@ async function onInputSabmit(event) {
 
   //---------------модалка при клике на карточку-------------//
   ref.gallery.addEventListener('click', onClickCardGallery);
-  async function onClickCardGallery(event) {
+  function onClickCardGallery(event) {
     if (event.target.nodeName === 'IMG') {
-      const data = await request.movieId(
-        event.target.parentNode.parentNode.dataset.id
-      );
-      // modalMovie(event);
-      // showModal();
-      render.lightBoxModal(data, markup.markupModal); ///----- не трогать
+      // const data = await request.movieId(
+      //   event.target.parentNode.parentNode.dataset.id
+      // );
+      modalMovie(event);
+      showModal();
+      // render.lightBoxModal(data, markup.markupModal); ///----- не трогать
       localStorageServise(event);
     }
   }
