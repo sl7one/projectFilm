@@ -13,7 +13,6 @@ body .tui-pagination {
     padding-left: 32px;
     padding-right: 32px;
   }
-
 }
 
 .tui-custon {
@@ -28,16 +27,15 @@ body .tui-pagination {
   text-decoration: none;
   width: 40px;
   height: 40px;
-  color: var(--mainBlack);
+  color: var(--paginationTextColor);
   background-color: transparent;
   border-radius: 5px;
   border: none;
-
 }
 
 .tui-custon-is-selected {
   background-color: var(--accent);
-  color:var(--mainWhite);
+  color: var(--mainWhite);
 }
 
 .tui-pagination .tui-first,
@@ -51,8 +49,7 @@ body .tui-pagination .tui-prev-is-ellip {
 }
 
 body .tui-pagination .tui-next,
-body .tui-pagination .tui-prev
-{
+body .tui-pagination .tui-prev {
   background-color: var(--mainWhite);
   border: none;
   width: 40px;
@@ -61,8 +58,6 @@ body .tui-pagination .tui-prev
 body .tui-pagination .tui-first-child,
 .tui-pagination .tui-prev-is-ellip,
 body .tui-pagination .tui-last-child,
-.tui-pagination .tui-prev-is-ellip{
+.tui-pagination .tui-prev-is-ellip {
   border-left: none;
 }
-
-
