@@ -71,7 +71,7 @@ export const request = {
   async popular(page) {
     try {
       const response = await axios.get(
-        `${BASE_URL}/trending/all/day?api_key=${API_KEY}&page=${page}`
+        `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
       );
       const { data } = response;
       // console.log(data);
