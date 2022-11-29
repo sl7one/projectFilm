@@ -152,7 +152,7 @@ export const markup = {
 };
 
 function cutString(name) {
-  const filmName = '';
+  let filmName = '';
   if (name.length < 35) {
     return name;
   }
