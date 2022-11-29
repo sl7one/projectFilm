@@ -1,9 +1,7 @@
 const basicLightbox = require('basiclightbox');
 import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
-import { markup } from './markup';
 import { ref } from './ref';
-import { request } from './requestAPI';
 
 export const render = {
   print(data, genres, markupCallBack) {
@@ -26,5 +24,13 @@ export const render = {
       .addEventListener('click', () => instance.close(), {
         once: true,
       });
+
+    document.addEventListener('keydown', onEscPress);
+    function onEscPress(event) {
+      if (event.key === 'Escape') {
+        instance.close();
+        document.removeEventListener('keydown', onEscPress);
+      }
+    }
   },
 };

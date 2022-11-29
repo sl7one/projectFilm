@@ -27,3 +27,28 @@ const onBtnQueueClick = () => {
 
 btnForFilmsWatched.addEventListener('click', onBtnWatchedClick);
 btnForFilmsQueue.addEventListener('click', onBtnQueueClick);
+
+document
+  .querySelector('[data-watched]')
+  .addEventListener('click', onTargetClick);
+document.querySelector('[data-queue]').addEventListener('click', onTargetClick);
+
+async function onTargetClick(event) {
+  if (event.target.nodeName === 'IMG') {
+    const data = await request.movieId(
+      event.target.parentNode.parentNode.dataset.id
+    );
+    modalMovie(event);
+    showModal();
+    // render.lightBoxModal(data, markup.markupModal); //--------не трогать
+    const btns = document.querySelectorAll(
+      '.basicLightbox  .movie-info__wrapper [type="button"]'
+    );
+
+    // btns[0].style.backgroundColor = 'green';
+    // btns[0].hidden = true;
+
+    btns[0].remove();
+    btns[1].remove();
+  }
+}
