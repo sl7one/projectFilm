@@ -73,9 +73,16 @@ export async function modalMovie(event) {
 
   const data = await request.movieId(id);
 
-  refsModal.poster.src =
-    `https://image.tmdb.org/t/p/w500${data?.poster_path}?api_key=${API_KEY}&language=en-US` ??
-    '#';
+  data.poster_path
+    ? (refsModal.poster.src =
+        `https://image.tmdb.org/t/p/w500${data?.poster_path}?api_key=${API_KEY}&language=en-US` ??
+        '#')
+    : (refsModal.poster.src =
+        'https://cdn-www.comingsoon.net/assets/uploads/2014/09/file_123131_0_defaultposterlarge.jpg');
+
+  // refsModal.poster.src =
+  //   `https://image.tmdb.org/t/p/w500${data?.poster_path}?api_key=${API_KEY}&language=en-US` ??
+  //   '#';
 
   refsModal.movieName.textContent =
     data?.original_title ?? data?.original_name ?? 'NAMELESS MOVIE';

@@ -46,7 +46,7 @@ async function onClickRandom(e) {
   async function randomMovie(id) {
     try {
       const findedRandomMovie = await request.movieId(`${id}`);
-      console.log(findedRandomMovie);
+      // console.log(findedRandomMovie);
       // console.log(123);
       if (!findedRandomMovie) {
         randomId = Math.round(Math.random() * 10000);
@@ -61,7 +61,7 @@ async function onClickRandom(e) {
         const data = await request.input();
         data.results = data.results.slice(0, 1);
         ref.pagination.classList.add('is-hidden');
-        console.log(data);
+        // console.log(data);
         const genres = await request.genres();
         render.print(data, genres, markup.gallery);
       } catch (error) {

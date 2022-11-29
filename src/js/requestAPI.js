@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export const API_KEY = 'ba9af9187d823167244a35c2fd918141';
 const BASE_URL = `https://api.themoviedb.org/3`;
@@ -124,6 +125,11 @@ export const request = {
 
   async movieId(movie_id) {
     try {
+      Loading.hourglass({
+        clickToClose: true,
+        svgSize: '200px',
+        svgColor: '#ff6b01',
+      });
       const response = await axios.get(
         `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
       );
@@ -132,6 +138,8 @@ export const request = {
       return data;
     } catch (error) {
       console.log('error', error);
+    } finally {
+      Loading.remove();
     }
   },
 };
