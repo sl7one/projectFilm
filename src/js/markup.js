@@ -24,7 +24,10 @@ export const markup = {
       let genre = ``;
 
       for (const elem of film.genre_ids) {
-        if (!markup.nameGenre[`${elem}`]) {
+        if (
+          !markup.nameGenre[`${elem}`] ||
+          markup.nameGenre[`${elem}`].length > 15
+        ) {
           continue;
         }
 
@@ -69,16 +72,26 @@ export const markup = {
 
   markupModal(data) {
     //----------------------------------------//
-
     const film = data;
+    // ----------------------------------genres----------------------
     const genresName = [];
-    film.genres.forEach(el => {
-      genresName.push(el.id);
-    });
-    //----------------------------------------------------
-    // console.log(genresName); //айдишки жанров текущего фильма
-    // обожаю тебя Софийка :)
-    //---------------------------------------------------
+    let genre = ``;
+    for (const elem of film.results.genre_ids) {
+      if (
+        !markup.nameGenre[`${elem}`] ||
+        markup.nameGenre[`${elem}`].length > 15
+      ) {
+        continue;
+      }
+
+      genresName.push(markup.nameGenre[`${elem}`]);
+    }
+
+    genre =
+      genresName.length > 2
+        ? genresName.slice(0, 2).join(', ') + `, Other`
+        : genresName.slice(0, 2).join(', ');
+    //----------------------------------------------------------------
     const defaultUrl =
       'https://cdn-www.comingsoon.net/assets/uploads/2014/09/file_123131_0_defaultposterlarge.jpg';
     const url = film.poster_path
@@ -128,7 +141,9 @@ export const markup = {
           1
         )}</p>
         <p class="original-title-container moovie-info__container">${film.original_title.toUpperCase()}</p>
-        <p class="genre-container moovie-info__container">???????????????</p>
+        <p class="genre-container moovie-info__container">${
+          genre || `Other`
+        }</p>
       </div>
 
       <p class="movie-info__about-title">About</p>
@@ -161,38 +176,3 @@ function cutString(name) {
     return (filmName = name.slice(0, 31) + '...');
   }
 }
-
-// if (film.title.length || film.name.length >= 35) {
-//   ref.tooltip.classList.remove('is-hidden');
-//   return;
-// }
-// `<li class="gallery__item">
-//       <a class="film" href="#">
-//         <img
-//           class="film__image"
-//           src="./images/Rectangle 12.jpg"
-//           alt="${data.title}"
-//           width="375"
-//           height="574"
-//         />
-//         <div class="film__meta">
-//           <p class="film__title">${title}</p>
-//           <p class="film__description">
-//             <span class="film__genre">Drama, Action</span>
-//             <span class="film__year">2020</span>
-//             <span class="film__rating">10</span>
-//           </p>
-//         </div>
-//       </a>
-//     </li >`;
-
-// `<li class="film-list-item" data-id=${e.id}>
-// <div class="film-image">
-// <img src ='https://image.tmdb.org/t/p/w500${e.poster_path}?api_key=${API_KEY}&language=en-US'; alt = '${e.title}'; loading = 'lazy';/>
-// </div>
-// <div class="film-list-wrapper">
-// <h3 class="film-name">${e.titlee.name}</h3>
-// <p class="film-about">${parseGenres(e.genre_ids)} | ${new Date(      e.release_date  e.first_air_date    ).getFullYear()}
-// <span class="rating">  ${e.vote_average.toFixed(      1    )}</span><p/>
-// </div>
-// </li>`
