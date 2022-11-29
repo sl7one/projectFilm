@@ -172,7 +172,7 @@ async function onInputSabmit(event) {
   event.target.reset();
 
   //---------------модалка при клике на карточку-------------//
-  refsModal.gallery.addEventListener('click', onClickCardGallery);
+  ref.gallery.addEventListener('click', onClickCardGallery);
   async function onClickCardGallery(event) {
     if (event.target.nodeName === 'IMG') {
       const data = await request.movieId(
