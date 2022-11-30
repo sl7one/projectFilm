@@ -5,38 +5,7 @@ import { render } from './render';
 import { ref } from './ref';
 
 const randomBtn = document.querySelector('.js-random-btn');
-// let randomId = Math.round(Math.random() * 10000);
 
-// randomMovie(randomId);
-// async function randomMovie(id) {
-//   try {
-//     const findedRandomMovie = await request.movieId(`${id}`);
-
-//     if (!findedRandomMovie) {
-//       randomId = Math.round(Math.random() * 10000);
-//       randomMovie(randomId);
-//       return;
-//     }
-
-//     randomBtn.addEventListener('click', onClickRandom);
-
-//     async function onClickRandom() {
-//       try {
-//         request.query =
-//           findedRandomMovie.original_title || findedRandomMovie.original_name;
-
-//         const data = await request.input();
-//         data.results = data.results.slice(0, 1);
-//         ref.pagination.classList.add('is-hidden');
-//         console.log(data);
-//         const genres = await request.genres();
-//         render.print(data, genres, markup.gallery);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     }
-//   } catch (error) {}
-// }
 randomBtn.addEventListener('click', onClickRandom);
 
 async function onClickRandom(e) {
@@ -46,8 +15,6 @@ async function onClickRandom(e) {
   async function randomMovie(id) {
     try {
       const findedRandomMovie = await request.movieId(`${id}`);
-      // console.log(findedRandomMovie);
-      // console.log(123);
       if (!findedRandomMovie) {
         randomId = Math.round(Math.random() * 10000);
         randomMovie(randomId);
@@ -61,7 +28,6 @@ async function onClickRandom(e) {
         const data = await request.input();
         data.results = data.results.slice(0, 1);
         ref.pagination.classList.add('is-hidden');
-        // console.log(data);
         const genres = await request.genres();
         render.print(data, genres, markup.gallery);
       } catch (error) {

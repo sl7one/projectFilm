@@ -20,9 +20,6 @@ const opts = {
   className: 'spinner', // The CSS class to assign to the spinner
   position: 'absolute', // Element positioning
 };
-const target = document.getElementById('foo');
-const spinner = new Spinner(opts).spin(target);
-
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 const options = {
@@ -49,7 +46,6 @@ const options = {
       '</a>',
   },
 };
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 import './js/footer';
@@ -60,7 +56,6 @@ import { markup } from './js/markup';
 import { render } from './js/render';
 import { request } from './js/requestAPI';
 import { shema } from './js/shema';
-// import { modal } from './js/modal';
 import { refsModal, showModal, hideModal, modalMovie } from './js/modalMovie';
 import { localStorageList } from './js/localStorage';
 import { randomModal } from './js/randomModal';

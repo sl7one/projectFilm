@@ -172,7 +172,6 @@ function cutString(name) {
     return name;
   }
   if (name.length >= 35) {
-    // ref.tooltip.classList.remove('is-hidden');
     return (filmName = name.slice(0, 31) + '...');
   }
 }
