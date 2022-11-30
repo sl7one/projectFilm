@@ -61,3 +61,7 @@ body .tui-pagination .tui-last-child,
 .tui-pagination .tui-prev-is-ellip {
   border-left: none;
 }
+body .tui-pagination .tui-last-child,
+.tui-pagination .tui-next-is-ellip {
+  border-right: none;
+}
