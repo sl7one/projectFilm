@@ -16,14 +16,7 @@
 
   background-color: var(--mainWhite);
   display: inline-block;
-  transition-timing-function: ease-in-out;
-  transition-duration: 350ms;
-  transition-property: box-shadow, transform;
-  &:hover {
-    box-shadow: 0px 2px 24px -5px rgba(0, 0, 0, 0.74);
-    transform: scale(1.02);
-  }
-
+  
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 455px;
@@ -183,6 +176,15 @@
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+
+  transition-timing-function: ease-in-out;
+  transition-duration: 350ms;
+  transition-property: box-shadow, transform;
+  
+    &:hover {
+      box-shadow: 0px 2px 24px -5px rgba(0, 0, 0, 0.74);
+      transform: scale(1.02);
+    }
 
   width: 280px;
   height: 443px;
