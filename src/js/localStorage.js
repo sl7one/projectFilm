@@ -6,7 +6,7 @@ export const localStorageList = {
   QUEUE_LOCAL: 'list-of-films-queue',
 
   // --------------------додаємо в список переглянутих----------------------------
-  watchedList(elem) {
+  watchedList(elem, event) {
     const filmsItem = elem.target.parentNode.parentNode;
 
     if (
@@ -21,6 +21,7 @@ export const localStorageList = {
     const renderW = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
 
     if (this.elementsWatched.includes(renderW)) {
+      event.target.textContent = 'Added to Watched';
       return;
     }
     this.elementsWatched.push(renderW);
@@ -30,7 +31,7 @@ export const localStorageList = {
     );
   },
   // --------------------додаємо в список в черзі-------------------------------
-  queueList(elem) {
+  queueList(elem, event) {
     const filmsItem = elem.target.parentNode.parentNode;
 
     if (
@@ -45,6 +46,8 @@ export const localStorageList = {
     const renderQ = `<li class="gallery__item" data-id="${filmsItem.dataset.id}">${filmsItem.innerHTML}</li>`;
 
     if (this.elementsQueue.includes(renderQ)) {
+      event.target.textContent = 'Added to Queue';
+
       return;
     }
 
