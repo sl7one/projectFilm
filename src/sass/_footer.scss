@@ -184,10 +184,4 @@
     top: 44%;
     right: 37%;
   }
-  animation: my-animation 5s forwards;
-  @keyframes my-animation {
-      0%   { opacity: 0; }
-      50%  { opacity: 1; }
-      100% { opacity: 0; }
-  }
 }
