@@ -26,7 +26,7 @@ export const markup = {
       for (const elem of film.genre_ids) {
         if (
           !markup.nameGenre[`${elem}`] ||
-          markup.nameGenre[`${elem}`].length > 15
+          markup.nameGenre[`${elem}`].length > 10
         ) {
           continue;
         }
