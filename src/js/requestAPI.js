@@ -63,7 +63,6 @@ export const request = {
         `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
       );
       const { data } = response;
-      console.log(data);
       return data;
     } catch (error) {
       console.log('error', error);
