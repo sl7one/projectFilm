@@ -167,7 +167,7 @@
 .title-team{
   position: absolute;
   top: 47%;
-  right: 26%;
+  right: 18%;
   font-family: 'Inter';
   font-style: italic;
   font-weight: 524;
@@ -177,14 +177,14 @@
   font-variation-settings: 'slnt' -10;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   @include tablet {
-    top: 44%;
-    right: 40%;
+    top: 45%;
+    right: 37%;
   }
   @include desktop {
     top: 44%;
-    right: 42%;
+    right: 40%;
   }
-  animation: my-animation 6s forwards;
+  animation: my-animation 5s forwards;
   @keyframes my-animation {
       0%   { opacity: 0; }
       50%  { opacity: 1; }
