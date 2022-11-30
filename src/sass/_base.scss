@@ -35,4 +35,11 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--body);
   // background-color: red;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.stretch{
+  flex-grow: 1;
 }
