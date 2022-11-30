@@ -19,11 +19,15 @@ const btnForFilmsQueue = document.querySelector('.lib-btn.queue');
 const onBtnWatchedClick = () => {
   boxForFilmsQueue.innerHTML = '';
   boxForFilmsWatched.innerHTML = '';
+  btnForFilmsWatched.classList.add('current-btn');
+  btnForFilmsQueue.classList.remove('current-btn');
   localStorageList.checkLocalWatched(boxForFilmsWatched);
 };
 const onBtnQueueClick = () => {
   boxForFilmsQueue.innerHTML = '';
   boxForFilmsWatched.innerHTML = '';
+  btnForFilmsWatched.classList.remove('current-btn');
+  btnForFilmsQueue.classList.add('current-btn');
   localStorageList.checkLocalQueue(boxForFilmsQueue);
 };
 
