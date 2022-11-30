@@ -5,7 +5,7 @@
   "homepage": "https://github.com/sl7one/projectFilm.git",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /projectFilm/"
+    "build": "parcel build src/*.html --public-url /projectFilm/ "
   },
   "repository": {
     "type": "git",

@@ -57,8 +57,11 @@ async function onTargetClick(event) {
         '.movie-info__wrapper  .button-wrapper [type="button"]'
       );
 
-      btns[0].remove();
-      btns[1].remove();
+      // btns[0].remove();
+      // btns[1].remove();
+
+      btns[0].style.display = 'none';
+      btns[1].style.display = 'none';
     } catch (e) {
     } finally {
       Loading.remove();
