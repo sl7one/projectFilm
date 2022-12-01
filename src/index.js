@@ -154,6 +154,7 @@ async function onInputSabmit(event) {
       modalMovie(event);
       showModal();
       // render.lightBoxModal(data, markup.markupModal); ///----- не трогать
+
       localStorageServise(event);
     }
   }
@@ -169,8 +170,10 @@ function localStorageServise(codeCardFilm) {
     'click',
     onQueueClick
   );
-  function onQueueClick() {
-    localStorageList.queueList(codeCardFilm);
+  function onQueueClick(event) {
+    event.target.textContent = 'Added to Queue';
+
+    localStorageList.queueList(codeCardFilm, event);
     refsModal.btnWatched.removeEventListener('click', onAddClick);
   }
 
@@ -182,8 +185,10 @@ function localStorageServise(codeCardFilm) {
     'click',
     onAddClick
   );
-  function onAddClick() {
-    localStorageList.watchedList(codeCardFilm);
+  function onAddClick(event) {
+    event.target.textContent = 'Added to Watched';
+
+    localStorageList.watchedList(codeCardFilm, event);
     refsModal.btnQueue.removeEventListener('click', onQueueClick);
   }
 }

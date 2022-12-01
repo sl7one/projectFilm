@@ -34,6 +34,9 @@ document.addEventListener('click', event => {
 });
 
 export function showModal() {
+  refsModal.btnQueue.textContent = 'Add to Queue';
+  refsModal.btnWatched.textContent = 'Add to Watched';
+
   offsetX = window.pageXOffset;
   offsetY = window.pageYOffset;
 
